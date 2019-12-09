@@ -1,0 +1,58 @@
+<view class="page">
+  <view class="main">
+    <view class="page_hd">
+      <view class="search">
+        <view class="weui-search-bar">
+            <view class="weui-search-bar__form">
+              <view class="weui-search-bar__box" bindtap="toSearch">
+                  <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                  <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+                  <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                      <icon type="clear" size="14"></icon>
+                  </view>
+              </view>
+            </view>
+            <view style="padding:0 20rpx;color:#aaa">搜索</view>
+        </view>
+      </view>
+      <view class="list-sort">
+        <!-- <view class="sort-item" wx:for="{{listSort}}" wx:key="{{index}}" bindtap="{{item.fun}}" data-index="{{index}}">
+          <view style="padding:0 10rpx;">{{item.name}}</view>
+          <view class="sort-arrow" wx:if="{{item.isSort}}">
+            <view class="sort-arrow-up"></view>
+            <view class="sort-arrow-middle"></view>
+            <view class="sort-arrow-down"></view>
+          </view>
+        </view> -->
+        <radio-group bindchange="radioChange" class="sort-item">
+          <label class="weui-cell weui-check__label" wx:for="{{listSort}}" wx:key="value" style="padding:20rpx" bindtap="{{item.fun}}" data-index="{{index}}">
+            <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
+            <view class="weui-cell__bd" style="padding:0;display:flex">
+              <view style="padding:0 10rpx;" class="{{item.checked ? 'select-radio' : ''}}">{{item.name}}</view>
+              <view class="sort-arrow" wx:if="{{item.isSort}}">
+                <view class="sort-arrow-up {{item.sortMethod && item.checked ? 'select-arrow-up' : ''}}"></view>
+                <view class="sort-arrow-middle"></view>
+                <view class="sort-arrow-down {{!item.sortMethod && item.checked ? 'select-arrow-down' : ''}}"></view>
+              </view>
+            </view>
+          </label>
+        </radio-group>
+        <view><image style="width:30rpx;height:30rpx;margin:15rpx 15rpx 0 0" src="{{listStyle ? '/image/0.2切图/商家信息.png' : '/image/形状17.png' }}" bindtap="changeStyle"></image></view>
+      </view>
+    </view>
+    <view class="{{listStyle ? 'recommend' : 'recommend-ano'}}">
+      <view class="recommend-item" wx:for="{{recommendItem}}" wx:key="index">
+        <view class="recommend-item-body">
+          <view class="recommend-item-body-pic">
+            <image src="{{item.img}}" mode="scaleToFill" style="width:{{listStyle ? '300' : '200'}}rpx;height:{{listStyle ? '300' : '200'}}rpx;margin:5rpx;border-radius: 10rpx"></image>
+          </view>
+          <view class="recommend-item-body-mes">
+            <view class="recommend-item-body-title">{{item.name}}</view>
+            <view style="color:#ff5d45;">￥{{item.price}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view style="text-align:center;padding:20rpx 0;">-end-</view>
+  </view>
+</view>

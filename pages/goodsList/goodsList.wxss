@@ -1,0 +1,116 @@
+.page_hd {
+  position: fixed;
+  top: 0;
+  width: 702rpx;
+}
+.main {
+  margin: 0 24rpx 100rpx 24rpx;
+}
+.list-sort {
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+}
+.list-sort view {
+  padding: 10px;
+  margin: auto;
+}
+
+/* 商品列表样式一 */
+.recommend {
+  margin: 200rpx 0 0 0;
+}
+.recommend .recommend-item {
+  width: 50%;
+  display: inline-block;
+}
+.recommend .recommend-item-body {
+ padding: 15rpx
+}
+.recommend .recommend-item-body-title {
+  display:-webkit-box;
+  -webkit-line-clamp:1;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  -webkit-box-orient:vertical;
+  word-break:break-all;
+}
+
+/* 商品列表样式二 */
+.recommend-ano {
+  margin: 200rpx 0 0 0;
+}
+.recommend-ano .recommend-item {
+  width: 100%;
+}
+.recommend-ano .recommend-item-body {
+ padding: 15rpx 0;
+ display: flex;
+ flex-wrap: wrap;
+}
+
+.recommend-ano .recommend-item-body-pic {
+  
+  width: 33.33%;
+  /* float: left; */
+}
+.recommend-ano .recommend-item-body-mes {
+  margin: 20rpx;
+}
+.recommend-ano .recommend-item-body-title {
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  -webkit-box-orient:vertical;
+  word-break:break-all;
+  width: 400rpx;
+  height: 100rpx;
+}
+
+
+/* 排序箭头样式 */
+
+.sort-arrow {
+  display: inline-block;
+  width: 20rpx;
+  margin: auto;
+  padding: 0 !important;
+}
+.sort-arrow-up {
+  width: 0;
+  height: 0;
+  padding: 0 !important;
+  border-style: solid;
+  border-width: 10rpx;
+  border-color:  transparent transparent #aaa;
+  margin: 10rpx;
+}
+.sort-arrow-down {
+  width: 0;
+  height: 0;
+  padding: 0 !important;
+  border-style: solid;
+  border-width: 10rpx;
+  border-color: #aaa transparent transparent;
+  margin: 10rpx;
+}
+.sort-arrow-middle {
+  width: 100%;
+  height: 8rpx;
+  padding: 0 !important;
+  margin: 0;
+  border: 0;
+}
+.sort-item {
+  display: flex;
+}
+.select-arrow-up {
+  border-color:  transparent transparent #ff5d45 !important;
+}
+.select-arrow-down {
+  border-color:  #ff5d45 transparent transparent !important;
+}
+.select-radio {
+  color: #ff5d45 !important;
+}

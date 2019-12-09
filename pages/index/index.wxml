@@ -1,0 +1,64 @@
+<view class="page">
+<view class="background-img">
+  <image src="/image/bg2.png" style="width: 750rpx;height:260rpx"></image>
+</view>
+  <view class="main">
+    <view class="search">
+      <view class="weui-search-bar" style="padding:0;width:90%">
+          <view class="weui-search-bar__form">
+            <view class="weui-search-bar__box" bindtap="toSearch">
+                <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+                <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                    <icon type="clear" size="14"></icon>
+                </view>
+            </view>
+        </view>
+      </view>
+      <image src="/image/消息.png" style="width: 40rpx;height:40rpx;margin:10rpx 10rpx 0 0" bindtap="toMessage"></image>
+    </view>
+    <view class="page-section page-section-spacing swiper">
+      <swiper
+        indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}"
+        interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px" style="height:150rpx;">
+          <swiper-item wx:for="{{background}}" wx:key="*this">
+                <image src="{{item}}" mode="scaleToFit" style="height:100%;width:682rpx;margin:0 10rpx;"></image>
+          </swiper-item>
+      </swiper>
+    </view>
+    <view class="nav-btn">
+      <block wx:for="{{navBtn}}"  wx:key="index">
+        <view class="nav-btn-item" bindtap="{{item.navTo}}">
+          <image src="{{item.img}}" mode="aspectFit" style="width:80rpx;height:80rpx;margin:25rpx 0 0 0"></image>
+          <view class="nav-btn-item-name"> {{item.name}} </view>
+        </view>
+      </block>
+    </view>
+    <view class="show-img">
+      <image src="/image/banner.png" mode="scaleToFill" style="width:100%;height:200rpx;margin:10rpx 0"></image>
+      <view class="show-img-mid">
+        <image src="/image/组47.png" mode="scaleToFill" style="width:340rpx;height:410rpx;margin:10rpx 0;padding-right:10rpx"></image>
+        <view style="width:350rpx">
+          <image src="/image/banner.png" mode="scaleToFill" style="width:340rpx;height:200rpx;margin:5rpx"></image>
+          <image src="/image/banner.png" mode="scaleToFill" style="width:340rpx;height:200rpx;margin:5rpx"></image>
+        </view>
+      </view>
+      <view class="show-img-bottom">
+        <view class="show-img-bottom-item" wx:for="{{midPic}}" wx:key="index">
+          <image src="{{item}}" mode="scaleToFill" style="width:340rpx;height:200rpx;border-radius: 10rpx;padding:5rpx"></image>
+        </view>
+      </view>
+    </view>
+    <view>推荐商品</view>
+    <view class="recommend">
+      <view class="recommend-item" wx:for="{{recommendItem}}" wx:key="index">
+        <view class="recommend-item-body" bindtap="toList">
+          <image src="{{item.img}}" mode="scaleToFill" style="width:300rpx;height:300rpx;margin:5rpx;background:#aaa;border-radius: 10rpx"></image>
+          <view class="recommend-item-body-title">{{item.name}}</view>
+          <view style="color:#ff5d45;">￥{{item.price}}</view>
+        </view>
+      </view>
+    </view>
+    <view style="text-align:center;padding:20rpx 0;">-end-</view>
+  </view>
+</view>

@@ -1,0 +1,129 @@
+<view class="page">
+  <view class="address" bindtap="selectAddress">
+    <view class="address-none main-size" wx:if="{{!hasAddress}}">
+      <view class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd">
+          <view style="display: inline-block; vertical-align: middle">请选择收货地址</view>
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </view>
+    </view>
+    <view class="address-has main-size" wx:if="{{hasAddress}}">
+      <view class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd">
+          <view style="display: inline-block; vertical-align: middle;width:600rpx;">
+            <view style="display:flex;justify-content: space-between;font-size:32rpx;">
+              <text>{{address.name}}</text>
+              <text style="color:#999">{{address.phone}}</text>
+            </view>
+            <view class="address-detail">{{address.addressDetail}}</view>
+          </view>
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </view>
+    </view>
+  </view>
+  <view class="goods main-size">
+    <view class="goods-list">
+      <view class="goods-list-item" wx:for="{{goods.goodsItem}}" wx:key="{{index}}">
+        <view class="goods-list-item-img">
+          <image src="{{item.img}}" style="width:160rpx;height:160rpx;padding:20rpx;"></image>
+        </view>
+        <view class="goods-list-item-mes">
+          <view class="goods-list-item-mes-name">{{item.name}}</view>
+          <view style="font-size:24rpx;color:#999;">{{item.itemSet}}</view>
+          <view style="display:flex;justify-content: space-between;">
+            <view style="color:#ff2b29;font-size:30rpx;">￥{{item.price}}</view>
+            <view style="font-size:29rpx;color:#555:">x{{item.buycount}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cell " style="padding:20rpx">
+      <view class="weui-cell__hd">
+        <view class="weui-label" style="width:130rpx">备注</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" placeholder="请输入备注信息"/>
+      </view>
+    </view>
+  </view>
+  <view class="goods-bonus main-size">
+    <view class="weui-cell" wx:for="{{action}}"  wx:key="index" bindtap="{{item.method}}" style="padding:15rpx 20rpx 15px 0;font-size:25rpx;color:#333;">
+      <view class="weui-cell__hd" style="position: relative;margin-right: 10px;" wx:if="{{item.hasIcon}}">
+          <image src="{{item.icon}}" style="width: 30rpx; height: 30rpx; display: block"/>
+      </view>
+      <view class="weui-cell__bd" style="display:flex;justify-content: space-between">
+          <view style="display:flex">
+            <view>{{item.mes}}</view>
+            <view style="padding:0 20rpx;color:#999;" wx:if="{{item.mes == '使用积分'}}">使用{{score}}积分抵用{{scoreToMoney}}元</view>
+          </view>
+          <view>
+            
+          </view>
+          <view style="display: inline-block;vertical-align:middle; font-size: 25rpx;color:#999;">{{item.subMes}}</view>
+          <view class="weui-cell__hd" wx:if="{{item.mes == '使用积分'}}">
+            <icon class="weui-icon-checkbox_circle" type="circle" size="20" wx:if="{{!scoreChecked}}"></icon>
+            <icon class="weui-icon-checkbox_success" type="success" size="20" wx:if="{{scoreChecked}}"></icon>
+          </view>
+      </view>
+    </view>
+  </view>
+  <view class="affordSelect main-size">
+    <view class="weui-cells weui-cells_after-title">
+      <radio-group bindchange="radioChange">
+        <label class="weui-cell weui-check__label" wx:for="{{radioItems}}" wx:key="value" style="padding:15rpx 20rpx 15rpx 0;font-size:25rpx;color:#333;height:50rpx;">
+          <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
+          <view class="weui-cell__bd" style="display:flex">
+            <image src="{{item.img}}" style="width: 30rpx; height: 30rpx; display: block;margin-right:20rpx;"></image>
+            <view>{{item.name}}</view>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+            <icon class="weui-icon-checkbox_circle" type="circle" size="20" wx:if="{{!item.checked}}"></icon>
+            <icon class="weui-icon-checkbox_success" type="success" size="20" wx:if="{{item.checked}}"></icon>
+          </view>
+        </label>
+      </radio-group>
+    </view>
+  </view>
+</view>
+<view class="toAfford">
+  <view class="setwindow-footer">
+    <view class="setwindow-footer-left">
+      <view class="setwindow-footer-left-up">
+        <view>支付金额：</view>
+        <view style="color: #ff3c25;">￥{{clearPriceCount}}</view>
+      </view>
+      <view class="setwindow-footer-left-down">
+        <view>赠送 </view>
+        <view style="color: #ff3c25;">{{getScore}}积分</view>
+      </view>
+    </view>
+    <view class="setwindow-footer-right">
+      <view style="background:linear-gradient(to right, #ff2527 , #fe5117);border-radius:75rpx" bindtap="changeSet">去支付</view>
+    </view>
+  </view>
+</view>
+
+<view class="weui-demo-dialog {{bonusistrue ? 'weui-demo-dialog_show' : ''}}">
+  <view class="weui-mask" bindtap="closeBonus"></view>
+  <view class="weui-half-screen-dialog" catchtap="stopEvent" style="padding:0">
+    <view class="bonus">
+      <view class="bonus-body" wx:for="{{bonus}}" wx:key="{{index}}" data-index="{{index}}" style="background:url('/image/优惠券.png');background-size:100% 100%" bindtap="bonusGot">
+        <!-- <image src="/image/优惠券.png" style="position:absolute;width:600rpx;height:160rpx;z-index:-1;"></image> -->
+        <view class="bonus-body-left">
+          <view class="bonus-body-left-item">
+            <view class="{{item.got ? 'bonus-body-left-item-time' : 'bonus-body-left-item-price'}}"><view style="font-size:22rpx;float:left">￥</view><view style="font-size:44rpx">{{item.price}}</view></view>
+            <view class="{{item.got ? 'bonus-body-left-item-time' : 'bonus-body-left-item-need'}}" style="font-size:22rpx">满{{item.need}}元可用</view>
+            <view class="bonus-body-left-item-time" style="font-size:22rpx">有效期至{{item.time}}</view>
+          </view>
+        </view>
+        <view class="bonus-body-right">
+          <view wx:if="{{item.got}}" style="color:#c9c9c9">已领取</view>
+          <view wx:else style="color:#ff3e2b">领取</view>
+        </view>
+      </view>
+    </view>
+    <view class="bonus-close" bindtap="closeBonus">关闭</view>
+  </view>
+</view>

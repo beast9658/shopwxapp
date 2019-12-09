@@ -1,0 +1,27 @@
+.weui-cell {
+  background: #fff
+}
+.section input ,.section textarea{
+  padding: 30rpx;
+}
+.section {
+  border-bottom: 2rpx solid #efefef;
+}
+.address-set {
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx;
+}
+.address-phone {
+  display: flex;
+  justify-content: space-between;
+}
+.btn-area {
+  position: fixed;
+  bottom: 0;
+  width: 100%
+}
+.btn-area-save {
+  background: linear-gradient(to right,#ff2527,#fe5117);
+  color: #fff;
+}

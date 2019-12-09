@@ -1,0 +1,10 @@
+<view class="page">
+  <view class="background-img">
+    <image src="/image/bg2.png" style="width: 750rpx;height:260rpx"></image>
+  </view>
+  <view class="mine">
+    <view class="status">
+      <view></view>
+    </view>
+  </view>
+</view>

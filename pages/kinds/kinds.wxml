@@ -1,0 +1,49 @@
+  <!--第一种格式-->
+
+<view class="page" wx:if="{{listStyle}}">
+
+  <!--左侧栏-->
+  <view class="nav_left-0{{classKind}}">
+    <block wx:for="{{cateItems}}" wx:key="unique">
+      <!--当前项的id等于item项的id，那个就是当前状态-->
+      <!--用data-index记录这个数据在数组的下标位置，使用data-id设置每个item的id值，供打开2级页面使用-->
+      <view class="nav_left_items {{curNav == item.cate_id ? 'active' : ''}}" bindtap="switchRightTab" data-index="{{index}}" data-id="{{item.cate_id}}">{{item.cate_name}}</view>
+    </block>
+  </view>
+  <!--右侧栏-->
+  <view class="nav_right-0{{classKind}}">
+  <!--如果有数据，才遍历项-->
+    <view wx:if="{{cateItems[0].ishaveChild}}">
+    <view>{{cateItems[curIndex].cate_name}}</view>
+      <block wx:for="{{cateItems[curIndex].children}}" wx:key="unique">
+        <view class="nav_right_items" data-id="{{item.DetailId}}" bindtap="isDetail"> 
+          <image src="{{item.image}}" wx:if="{{showPic}}"></image>
+          <view>
+            <text>{{item.name}}</text>
+            <text style="margin-top: 5rpx;color:#ff5d45;font-size:28rpx;" wx:if="{{className.left=='nav_left-04'}}">￥{{item.price}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+    <!--如果无数据，则显示数据-->
+    <view class="nodata_text" wx:else bindtap="changeStyleTo1">该分类暂无数据</view>
+  </view>
+
+</view>
+
+
+  <!--第二种格式-->
+
+  <view class="page-another" wx:if="{{!listStyle}}">
+    <view class="main">
+      <view class="main-body" wx:for="{{cateItems}}" wx:key="unique">
+        <view class="main-body-title">
+          <view bindtap="changeStyleTo2">{{item.cate_name}}</view>
+          <view><image src="/image/形状7拷贝3.png" style="width:15rpx; height:30rpx;"></image></view>
+        </view>
+        <view class="main-body-chl">
+          <view class="main-body-item" wx:for="{{cateItems[index].children}}" wx:key="unique">{{item.name}}</view>
+        </view>
+      </view>
+    </view>
+  </view>

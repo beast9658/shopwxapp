@@ -1,0 +1,214 @@
+.weui-cells::after {
+  border-bottom: 0;
+}
+
+.background-img {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+}
+
+.buycar{
+  width: 700rpx;
+  margin: 0 auto 200rpx;
+}
+
+.buycar-item {
+  height: 250rpx;
+  margin: 30rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 0 32rpx;
+}
+.buycar-item::before {
+  border: 0;
+}
+.buycar-item-name {
+  display:-webkit-box;
+  -webkit-line-clamp:1;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  -webkit-box-orient:vertical;
+  word-break:break-all;
+  font-size: 29rpx;
+  width: 300rpx;
+}
+.buycar-item-set {
+  font-size: 24rpx;
+  color: #aaa
+}
+.buycar-item-price {
+  font-size: 29rpx;
+  color: #ff3405;
+}
+
+
+
+/* 计数器 */
+.stepper {  
+    width: 150rpx;  
+    height: 40rpx;  
+    border: 2rpx solid #ccc;  
+    margin:0 auto;  
+}  
+  
+/*加号和减号*/  
+.stepper text {  
+    width: 40rpx;  
+    line-height: 40rpx;  
+    text-align: center;  
+    float: left;  
+}  
+  
+/*数值*/  
+.stepper input {  
+    width: 65rpx;  
+    height: 40rpx;  
+    float: left;  
+    margin: 0 auto;  
+    text-align: center;  
+    font-size: 29rpx;  
+    /*给中间的input设置左右边框即可*/  
+    border-left: 1px solid #ccc;  
+    border-right: 1px solid #ccc;  
+}  
+  
+/*普通样式*/  
+.stepper .normal{  
+    color: black;  
+}  
+  
+/*禁用样式*/  
+.stepper .disabled{  
+    color: #ccc;  
+}
+
+.buycar-footer {
+  width: 700rpx;
+  height: 100rpx;
+  padding: 0 25rpx;
+  position: fixed;
+  bottom: 90rpx;
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  z-index: 999
+}
+.footer-btn {
+  width: 200rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  background: #ff2925;
+  margin: auto;
+  text-align: center;
+  border-radius: 70rpx;
+  color: #fff;
+}
+
+/* 弹窗 */
+.weui-demo-dialog{
+  visibility:hidden;
+  opacity:0;
+  transition:all .3s;
+}
+.weui-half-screen-dialog{
+  transition:all .3s;
+  transform:translateY(100%);
+}
+.weui-demo-dialog_show{
+  visibility:visible;
+  opacity:1;
+}
+.weui-demo-dialog_show .weui-half-screen-dialog{
+    transform:translateY(0);
+}
+
+
+.setwindow-body-item {
+  display: flex;
+}
+.setwindow-body-item-select label {
+  text-align: center;
+  margin: 25rpx 25rpx 25rpx 0;
+  padding: 10rpx 20rpx;
+  background: #f4f4f4;
+  width: 130rpx;
+  height: 50rpx;
+}
+.setwindow-body-item-select label::before,.setwindow-body-item .weui-cells::before {
+  border: 0;
+}
+.setwindow-body-item-select-checked {
+  background: #ff552e !important;
+  color: #fff;
+}
+.setwindow-body-count {
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx 0;
+}
+.setwindow-body-count-title {
+  margin: auto 0;
+}
+
+.setwindow-footer-left {
+  margin: auto 0;
+  display: flex;
+  font-size: 29rpx;
+}
+.setwindow-footer {
+  width: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  padding: 20rpx 0;
+}
+.setwindow-footer-right {
+  display: flex;
+}
+.setwindow-footer-right view {
+  color: #fff;
+  font-size: 29rpx;
+  text-align: center;
+  line-height: 50rpx;
+  padding: 15rpx;
+  height: 50rpx;
+  width: 180rpx;
+  margin: auto;
+}
+
+.setwindow-body-item-title {
+  padding-top:30rpx; 
+}
+.setwindow-body-item-title,.setwindow-body-count-title {
+  color: #777;
+  font-size: 26rpx;
+}
+
+
+.edit {
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  margin: 50rpx 60rpx 0;
+}
+.edit-left {
+  display: flex;
+}
+.edit-right {
+  font-size: 26rpx;
+}
+.cannotbuy {
+  position: absolute;
+  left: 60rpx;
+  top: 45rpx;
+  width: 100rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 100rpx;
+  font-size: 20rpx;
+  color: #fff;
+  text-align: center;
+}

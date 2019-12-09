@@ -1,0 +1,209 @@
+<view class="page">
+  <view class="page-section page-section-spacing swiper">
+    <swiper
+      indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}"
+      interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px" style="height:{{imgheights[current]}}rpx;" >
+        <swiper-item wx:for="{{background}}" wx:key="index">
+          <image src="{{item}}" mode="widthFix" style="width:730rpx;height:100%;margin:0 10rpx;" ></image>
+        </swiper-item>
+    </swiper>
+  </view>
+  <view class="body">
+    <view class="item-mes">
+      <view class="item-mes-name">{{itemMessage.name}}</view>
+      <view class="item-mes-in">
+        <view class="item-mes-in-price">￥{{itemMessage.price}}</view>
+        <view class="item-mes-in-count">销量：{{itemMessage.count}}</view>
+      </view>
+    </view>
+    <view class="item-act">
+      <view class="weui-cell" wx:for="{{action}}"  wx:key="index" bindtap="{{item.method}}" style="padding:15rpx 0;font-size:25rpx;color:#333;">
+        <view class="weui-cell__hd" style="position: relative;margin-right: 10px;" wx:if="{{item.hasIcon}}">
+            <image src="{{item.icon}}" style="width: 30rpx; height: 30rpx; display: block"/>
+        </view>
+        <view class="weui-cell__bd">
+            <view class="message-title">{{item.mes}}</view>
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access" style="font-size: 0" wx:if="{{item.hasSub}}">
+          <view style="display: inline-block;vertical-align:middle; font-size: 25rpx;color:#999;">{{item.subMes}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="item-appraise">
+      <view class="item-appraise-title">商品评价({{appraise.length}})</view>
+      <view wx:if="{{appraise.length==0}}" class="item-appraise-none">暂无评论</view>
+      <view wx:else class="item-appraise-has">
+        <view wx:for="{{appraise}}" wx:key="{{index}}" wx:if="{{index<2}}">
+          <view class="item-appraise-has-head">
+            <view class="weui-cell" style="padding:20rpx 0">
+              <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+                  <image src="{{item.headicon}}" style="width: 60rpx; height: 60rpx; display: block;"/>
+              </view>
+              <view class="weui-cell__bd">
+                  <view style="font-size:26rpx;color:#333;">{{item.nickname}}</view>
+                  <view style="font-size: 13px;color: #888888;display:flex">
+                    <image wx:for="{{item.star}}" wx:key="{{index}}" src="/image/形状18.png" style="width:25rpx;height:25rpx"></image>
+                    <image wx:for="{{5-item.star}}" wx:key="{{index}}" src="/image/形状18.png" style="width:25rpx;height:25rpx;filter: grayscale(100%);"></image>
+                  </view>
+              </view>
+              <view class="weui-cell__ft" style="font-size: 0">
+                  <view style="display: inline-block;vertical-align:middle; font-size: 24rpx;color:#aaa">{{item.time}}</view>
+              </view>
+            </view>
+          </view>
+          <view class="item-appraise-has-body">
+            <view class="item-appraise-has-body-words">{{item.words}}</view>
+            <view class="item-appraise-has-body-imgs">
+              <image src="{{item}}" wx:for="{{item.imgs}}" wx:key="index" wx:if="{{index<4}}" style="width:170rpx;height:170rpx;padding:5rpx;"></image>
+              <view wx:if="{{item.imgs.length>4}}" class="item-appraise-has-body-imgs-count">共{{item.imgs.length}}张</view>
+            </view>
+            <view class="item-appraise-has-body-size">{{item.size}}</view>
+          </view>
+        </view>
+        <view class="item-appraise-has-all">
+          <navigator class="item-appraise-has-all-word" url="/pages/allAppraise/allAppraise">查看全部评价</navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="detail">
+    <view class="detail-title">
+      <view class="detail-title-word">商品详情</view>
+    </view>
+    <image src="{{item}}" mode="widthFix" style="width:100%;"wx:for="{{detailImg}}" wx:key="{{index}}"></image>
+  </view>
+</view>
+<view class="footer">
+  <view class="footer-left">
+    <view class="footer-left-item" wx:for="{{footer}}" wx:key="{{index}}" bindtap="{{item.fun}}">
+      <image src="{{item.img}}" style="width:30rpx;height:30rpx;"></image>
+      <view class="footer-left-item-name">{{item.name}}</view>
+    </view>
+  </view>
+  <view class="footer-right">
+    <view style="background:linear-gradient(to right, #ff9e16 , #ff6c12);border-radius:75rpx 0 0 75rpx" bindtap="openDialog">加入购物车</view>
+    <view style="background:linear-gradient(to right, #ff2527 , #fe5117);border-radius:0 75rpx 75rpx 0" bindtap="openDialog">立即购买</view>
+  </view>
+</view>
+<view class="weui-demo-dialog {{setistrue ? 'weui-demo-dialog_show' : ''}}" style="z-index:999999">
+  <view class="weui-mask" bindtap="closeDialog"></view>
+  <view class="weui-half-screen-dialog" catchtap="stopEvent">
+    <view class="setwindow">
+      <view class="setwindow-head">
+        <view class="weui-cell" style="padding:20rpx 0">
+          <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+              <image src="{{setWindow.headicon}}" style="width: 150rpx; height: 150rpx; display: block;"/>
+          </view>
+          <view class="weui-cell__bd">
+              <view style="font-size:30rpx;color:#333;">已选择：{{setWindow.nickname}}</view>
+              <view style="font-size:32rpx;color: #ff2b29;">￥{{setWindow.price}}</view>
+          </view>
+          <view class="weui-cell__ft" style="font-size: 0">
+              <view style="display: inline-block;vertical-align:middle; font-size: 24rpx;color:#aaa">销量：{{setWindow.count}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="setwindow-body">
+        <view class="setwindow-body-item-title">规格名称</view>
+        <view class="setwindow-body-item">
+          <view class="weui-cells" wx:for="{{radioItems}}" wx:key="{{index}}">
+            <radio-group bindchange="radioChange" class="setwindow-body-item-select">
+                <label class="weui-cell weui-check__label {{item.checked ? 'setwindow-body-item-select-checked':'' }}">
+                    <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
+                    <view class="weui-cell__bd" style="font-size:24rpx;">{{item.name}}</view>
+                </label>
+            </radio-group>
+          </view>
+        </view>
+        <view class="setwindow-body-count">
+          <view class="setwindow-body-count-title">选择数量</view>
+          <view>
+            <view class="stepper">  
+              <!-- 减号 -->  
+              <text class="{{minusStatus}}" bindtap="bindMinus">-</text>  
+              <!-- 数值 -->  
+              <input type="number" bindchange="bindManual" value="{{num}}" />  
+              <!-- 加号 -->  
+              <text class="normal" bindtap="bindPlus">+</text>  
+            </view>  
+          </view>
+        </view>
+        <view class="setwindow-footer">
+          <view class="setwindow-footer-left">
+            <view>合计：</view>
+            <view style="color: #ff3c25;">￥{{priceCount}}</view>
+          </view>
+          <view class="setwindow-footer-right">
+            <view style="background:linear-gradient(to right, #ff9e16 , #ff6c12);border-radius:75rpx 0 0 75rpx">加入购物车</view>
+            <view style="background:linear-gradient(to right, #ff2527 , #fe5117);border-radius:0 75rpx 75rpx 0">立即购买</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="weui-demo-dialog {{bonusistrue ? 'weui-demo-dialog_show' : ''}}">
+  <view class="weui-mask" bindtap="closeBonus"></view>
+  <view class="weui-half-screen-dialog" catchtap="stopEvent" style="padding:0">
+    <view class="bonus">
+      <view class="bonus-body" wx:for="{{bonus}}" wx:key="{{index}}" data-index="{{index}}" style="background:url('/image/优惠券.png');background-size:100% 100%" bindtap="bonusGot">
+        <!-- <image src="/image/优惠券.png" style="position:absolute;width:600rpx;height:160rpx;z-index:-1;"></image> -->
+        <view class="bonus-body-left">
+          <view class="bonus-body-left-item">
+            <view class="{{item.got ? 'bonus-body-left-item-time' : 'bonus-body-left-item-price'}}"><view style="font-size:22rpx;float:left">￥</view><view style="font-size:44rpx">{{item.price}}</view></view>
+            <view class="{{item.got ? 'bonus-body-left-item-time' : 'bonus-body-left-item-need'}}" style="font-size:22rpx">满{{item.need}}元可用</view>
+            <view class="bonus-body-left-item-time" style="font-size:22rpx">有效期至{{item.time}}</view>
+          </view>
+        </view>
+        <view class="bonus-body-right">
+          <view wx:if="{{item.got}}" style="color:#c9c9c9">已领取</view>
+          <view wx:else style="color:#ff3e2b">领取</view>
+        </view>
+      </view>
+    </view>
+    <view class="bonus-close" bindtap="closeBonus">关闭</view>
+  </view>
+</view>
+
+
+<view class="weui-demo-dialog {{shareistrue ? 'weui-demo-dialog_show' : ''}}" bindlongtap="openShareMore">
+  <view class="weui-mask"></view>
+  <view class="weui-dialog__wrp">
+      <view class="weui-dialog" catchtap="stopEvent">
+        <view class="weui-dialog__bd" style="position:relative">
+          <image class="share-close" src="/image/guanbi.png" style="width:50rpx;height:50rpx;position:absolute;right:10rpx;top:10rpx;" bindtap="closeShare"></image>
+          <image class="weui-article__img" src="{{background[0]}}" mode="widthFix" style="max-width:100%;"/>
+          <view class="share-item-mes">
+            <view class="share-item-mes-name">{{itemMessage.name}}</view>
+            <view class="share-item-mes-price">￥{{itemMessage.price}}</view>
+          </view>
+          <view class="share-item-tip">
+            <view><image src="{{background[0]}}" mode="widthFix" style="width:100rpx;height:100rpx;margin:30rpx"/></view>
+            <view class="share-item-tip-word">
+              <view>① 长按进行图片保存</view>
+              <view>② 长按可识别二维码</view>
+            </view>
+          </view>
+        </view>
+      </view>
+  </view>
+</view>
+
+
+
+<view class="weui-demo-dialog {{sharemoreistrue ? 'weui-demo-dialog_show' : ''}}">
+      <view class="weui-mask" bindtap="closeShareMore" style="z-index:9999"></view>
+      <view class="weui-actionsheet {{sharemoreistrue ? 'weui-actionsheet_toggle' : ''}}" catchtap="stopEvent" style="z-index:10000">
+          <view class="weui-actionsheet__title">
+              <view class="weui-actionsheet__title-text">这是一个标题，可以为一行或者两行。</view>
+          </view>
+          <view class="weui-actionsheet__menu">
+              <view class="weui-actionsheet__cell">图片保存</view>
+              <view class="weui-actionsheet__cell">识别图中二维码</view>
+          </view>
+          <view class="weui-actionsheet__action">
+              <view class="weui-actionsheet__cell" bindtap="closeShareMore">取消</view>
+          </view>
+      </view>
+    </view>

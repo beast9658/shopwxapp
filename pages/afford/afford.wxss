@@ -1,0 +1,130 @@
+.page {
+  margin-bottom: 200rpx;
+}
+.weui-cells::before {
+  border: 0
+}
+.main-size {
+  width: 700rpx;
+  margin: 20rpx auto;
+  border-radius: 20rpx;
+  background: #fff;
+}
+.address-detail {
+  width: 600rpx;
+  font-size: 27rpx;
+  color: #333;
+}
+.goods-list-item {
+  display: flex;
+}
+.goods-list-item-mes {
+  width: 460rpx
+}
+.goods-list-item-mes-name {
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  -webkit-box-orient:vertical;
+  word-break:break-all;
+  font-size: 29rpx;
+  height: 100rpx;
+  line-height: 50rpx;
+}
+.goods .weui-cell {font-size: 26rpx;}
+.goods .weui-cell::before {
+  border: 0
+}
+.goods-bonus {
+  border-style: solid;
+  border-width: 20rpx 0;
+  border-color: #f8f8f8;
+}
+.goods-bonus .weui-cell::before {
+  border: 0;
+}
+
+
+.weui-demo-dialog{
+  visibility:hidden;
+  opacity:0;
+  transition:all .3s;
+}
+.weui-half-screen-dialog{
+  transition:all .3s;
+  transform:translateY(100%);
+}
+.weui-demo-dialog_show{
+  visibility:visible;
+  opacity:1;
+}
+.weui-demo-dialog_show .weui-half-screen-dialog{
+    transform:translateY(0);
+}
+.bonus-body {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 30rpx;
+  margin: 30rpx 80rpx;
+  position: relative;
+}
+.bonus-body-left-item-price {
+  display: flex;
+  color: #fa482b;
+}
+.bonus-body-right {
+  font-size: 29rpx;
+  width: 30rpx;
+  margin: auto 0;
+}
+.bonus-body-left-item-need {
+  color: #555;
+}
+.bonus-body-left-item-time {
+  color: #b2b2b2;
+}
+.bonus-close {
+  padding: 30rpx;
+  margin: 0 !important;
+  background: linear-gradient(to right,#ff2527,#fe5117);
+  text-align: center;
+  color: #fff;
+  
+}
+
+
+.setwindow-footer-left {
+  margin: auto 0;
+  
+  font-size: 29rpx;
+}
+.setwindow-footer-left-up, .setwindow-footer-left-down {
+  display: flex;
+}
+.setwindow-footer {
+  width: 700rpx;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  padding: 20rpx 25rpx;
+}
+.setwindow-footer-right {
+  display: flex;
+}
+.setwindow-footer-right view {
+  color: #fff;
+  font-size: 29rpx;
+  text-align: center;
+  line-height: 50rpx;
+  padding: 15rpx;
+  height: 50rpx;
+  width: 180rpx;
+  margin: auto;
+}
+.toAfford {
+  position: fixed;
+  bottom: 0;
+  z-index: 999;
+}

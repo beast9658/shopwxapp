@@ -1,0 +1,131 @@
+<view class="page">
+  <view class="background-img">
+    <image src="/image/bg2.png" style="width: 750rpx;height:260rpx"></image>
+  </view>
+  <view class="edit">
+    <view class="edit-left">
+      <text style="font-size:32rpx;position:relative;top:-10rpx">购物车</text>
+      <text style="font-size:26rpx;">共{{itemCount}}件商品</text>
+    </view>
+    <view class="edit-right">
+      <view wx:if="{{!editBuyCar}}" bindtap="toEdit">编辑</view>
+      <view wx:if="{{editBuyCar}}" bindtap="saveEdit">完成</view>
+    </view>
+  </view>
+  <view class="weui-cells weui-cells_checkbox weui-cells_after-title" style="background-color: transparent;">
+    <checkbox-group catchchange="checkboxChange" class="buycar">
+      <label class="weui-cell weui-check__label buycar-item" wx:for="{{checkboxItems}}" wx:key="value" data-index="{{index}}" data-id="{{item.value}}">
+        <checkbox class="weui-check" value="{{item.value}}" disabled="{{!editBuyCar&&item.status!=0 ? true : false}}" checked="{{item.checked}}"/>
+        <view class="weui-cell__hd weui-check__hd_in-checkbox" style="padding:0">
+          <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+          <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+        </view>
+        <view class="weui-cell__bd" style="display:flex;margin:auto;height:180rpx;position:relative">
+          <view class="cannotbuy" wx:if="{{item.status==1}}">已失效</view>
+          <view class="cannotbuy" wx:if="{{item.status==2}}">已售罄</view>
+          <image src="{{item.img}}" style="width:180rpx;height:180rpx;padding:0 20rpx;"></image>
+          <view>
+            <text class="buycar-item-name" style="color:{{item.status==0? '':'#999'}}">{{item.name}}</text>
+            <view style="display:flex;justify-content: space-between;width:170rpx;padding:15rpx;background:#fafafa;margin:15rpx;" catchtap="{{item.status==0? 'openDialog':''}}" data-id="{{item.value}}">
+              <text class="buycar-item-set">{{item.itemset}}</text>
+              <image src="/image/形状40.png" style="width:20rpx;height:20rpx;margin:auto 0"></image>
+            </view>
+            <view>
+              <view style="display:flex;justify-content: space-between;margin:35rpx 0;">
+                <text class="buycar-item-price" style="color:{{item.status==0? '':'#999'}}">￥{{item.price}}</text>
+                <view>
+                  <view class="stepper">  
+                    <!-- 减号 -->  
+                    <text class="{{minusStatus}}" catchtap="{{item.status==0? 'bindMinus':''}}" data-id="{{item.value}}">-</text>  
+                    <!-- 数值 -->  
+                    <input type="number" bindchange="{{item.status==0? 'bindManual':''}}" value="{{item.num}}" data-id="{{item.value}}"/>  
+                    <!-- 加号 -->  
+                    <text class="normal" catchtap="{{item.status==0? 'bindPlus':''}}" data-id="{{item.value}}">+</text>  
+                  </view>  
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </label>
+    </checkbox-group>
+  </view>
+  <view class="buycar-footer">
+    <view style="display:flex;margin:auto 0;" bindtap="{{!editBuyCar? 'allSelect' : 'allSelectAno'}}">
+      <view class="weui-cell__hd weui-check__hd_in-checkbox" style="padding:0">
+        <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!isAllSelect}}"></icon>
+        <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{isAllSelect}}"></icon>
+      </view>
+      <text>全选</text>
+    </view>
+    <view style="display:flex;">
+      <view style="padding:0 20rpx" wx:if="{{!editBuyCar}}">
+        <view style="font-size:29rpx">
+          <text>合计：</text>
+          <text style="color:#ff3405;">￥{{allPriceCount}}</text>
+        </view>
+        <text style="font-size:18rpx;color:#aaa;">配送费￥{{send}}，已优惠￥{{bonus}}</text>
+      </view>
+      <view class="footer-btn" wx:if="{{!editBuyCar}}" bindtap="toAfford">结算({{buyCarCount}})</view>
+      <view class="footer-btn" wx:if="{{editBuyCar}}" bindtap="deleteBuyCar">删除</view>
+    </view>
+  </view>
+</view>
+
+
+<view class="weui-demo-dialog {{setistrue ? 'weui-demo-dialog_show' : ''}}">
+  <view class="weui-mask" bindtap="closeDialog"></view>
+  <view class="weui-half-screen-dialog" catchtap="stopEvent" style="z-index:99999">
+    <view class="setwindow">
+      <view class="setwindow-head">
+        <view class="weui-cell" style="padding:20rpx 0">
+          <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+              <image src="{{setWindow.headicon}}" style="width: 150rpx; height: 150rpx; display: block;"/>
+          </view>
+          <view class="weui-cell__bd">
+              <view style="font-size:30rpx;color:#333;">已选择：{{setWindow.nickname}}</view>
+              <view style="font-size:32rpx;color: #ff2b29;">￥{{setWindow.price}}</view>
+          </view>
+          <view class="weui-cell__ft" style="font-size: 0">
+              <view style="display: inline-block;vertical-align:middle; font-size: 24rpx;color:#aaa">库存：{{setWindow.count}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="setwindow-body">
+        <view class="setwindow-body-item-title">规格名称</view>
+        <view class="setwindow-body-item">
+          <view class="weui-cells" wx:for="{{radioItems}}" wx:key="{{index}}">
+            <radio-group bindchange="radioChange" class="setwindow-body-item-select">
+                <label class="weui-cell weui-check__label {{item.checked ? 'setwindow-body-item-select-checked':'' }}">
+                    <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
+                    <view class="weui-cell__bd" style="font-size:24rpx;">{{item.name}}</view>
+                </label>
+            </radio-group>
+          </view>
+        </view>
+        <view class="setwindow-body-count">
+          <view class="setwindow-body-count-title">选择数量</view>
+          <view>
+            <view class="stepper">  
+              <!-- 减号 -->  
+              <text class="{{dialogStatus.minusStatus}}" bindtap="dialogBindMinus">-</text>  
+              <!-- 数值 -->  
+              <input type="number" bindchange="dialogBindManual" value="{{dialogStatus.num}}" />  
+              <!-- 加号 -->  
+              <text class="normal" bindtap="dialogBindPlus">+</text>  
+            </view>  
+          </view>
+        </view>
+        <view class="setwindow-footer">
+          <view class="setwindow-footer-left">
+            <view>合计：</view>
+            <view style="color: #ff3c25;">￥{{dialogStatus.priceCount}}</view>
+          </view>
+          <view class="setwindow-footer-right">
+            <view style="background:linear-gradient(to right, #ff2527 , #fe5117);border-radius:75rpx" bindtap="changeSet">确定</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

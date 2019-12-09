@@ -1,0 +1,10 @@
+.main {
+  margin: 0 24rpx 100rpx 24rpx;
+}
+.recommend-item {
+  width: 50%;
+  display: inline-block;
+}
+.recommend-item-body {
+ padding: 15rpx
+}
