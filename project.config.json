@@ -56,16 +56,17 @@
 			"current": -1,
 			"list": [
 				{
-					"id": -1,
-					"name": "地址",
-					"pathName": "pages/address/address",
+					"id": 0,
+					"name": "订单",
+					"pathName": "pages/order/order",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "添加地址",
-					"pathName": "pages/addressEdit/addressEdit",
+					"name": "我的",
+					"pathName": "pages/mine/mine",
+					"query": "",
 					"scene": null
 				}
 			]

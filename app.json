@@ -13,7 +13,8 @@
     "pages/mine/mine",
     "pages/afford/afford",
     "pages/address/address",
-    "pages/addressEdit/addressEdit"
+    "pages/addressEdit/addressEdit",
+    "pages/order/order"
   ],
   "tabBar": {
     "custom": true,

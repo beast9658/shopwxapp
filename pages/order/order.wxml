@@ -1,0 +1,28 @@
+<view class="page">
+  <view class="header">
+    <view class="weui-cells weui-cells_after-title">
+      <radio-group bindchange="radioChange" style="display:flex;justify-content: space-between;">
+        <label class="weui-cell weui-check__label {{item.checked ? 'header-checked' : ''}}" wx:for="{{radioItems}}" wx:key="value">
+          <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}" />
+          <view class="weui-cell__bd" style="font-size:29rpx;">{{item.name}}</view>
+        </label>
+      </radio-group>
+    </view>
+  </view>
+  <view class="order-list">
+    <view class="order-list-item" wx:for="{{orderList}}" wx:key="{{index}}">
+      <view class="order-list-item-header">
+        <view>订单号：{{item.orderNum}}</view>
+        <view style="color:#ff552e" wx:if="{{item.type==0}}">等待付款</view>
+        <view style="color:#ff552e" wx:if="{{item.type==1}}">等待发货</view>
+        <view style="color:#ff552e" wx:if="{{item.type==2}}">等待收货</view>
+        <view style="color:#ff552e" wx:if="{{item.type==3}}">等待评价</view>
+        <view style="color:#ff552e" wx:if="{{item.type==4}}">已完成</view>
+        <view wx:if="{{item.type==5}}">关闭交易</view>
+      </view>
+      <view>
+        <image></image>
+      </view>
+    </view>
+  </view>
+</view>

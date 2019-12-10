@@ -1,5 +1,48 @@
+.page {
+  margin: 50rpx 0 200rpx;
+}
+.mine {
+  width: 700rpx;
+  margin: 25rpx;
+}
+.block {
+  padding: 30rpx;
+  border-radius: 20rpx;
+  background: #fff;
+  margin-bottom: 25rpx;
+}
 .background-img {
   position: absolute;
   z-index: -1;
   top: 0;
+}
+.status {
+  display: flex;
+  justify-content: space-between;
+}
+.sign {
+  font-size: 24rpx;
+  color: #fe3c1f;
+  background: rgba(254, 60, 31, 0.1);
+  border: 2rpx solid #fe3c1f;
+  border-radius: 10rpx;
+  padding: 10rpx 25rpx;
+  margin: 0 15rpx;
+}
+.money {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+.action-item {
+  display: flex;
+  /* justify-content: space-between; */
+  text-align: center;
+  padding-top:30rpx;
+}
+.action-title {
+  padding-bottom:30rpx;
+  border-bottom: 2rpx solid #efefef;
+  display: flex;
+  justify-content: space-between;
 }

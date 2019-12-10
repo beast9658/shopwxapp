@@ -3,8 +3,37 @@
     <image src="/image/bg2.png" style="width: 750rpx;height:260rpx"></image>
   </view>
   <view class="mine">
-    <view class="status">
-      <view></view>
+    <view class="status block">
+      <view style="display:flex">
+        <image src="{{user.head}}" style="width:90rpx;height:90rpx;margin-right:20rpx;"></image>
+        <view>
+          <view style="display:flex">
+            <view style="font-size:32rpx;">{{user.account}}</view>
+            <view class="sign">签到</view>
+          </view>
+          <view style="color:#9f9f9f;font-size:24rpx;">会员ID：{{user.id}}</view>
+        </view>
+      </view>
+      <image src="/image/0.2切图/设置.png" style="width:35rpx;height:35rpx;margin:auto 0"></image>
+    </view>
+    <view class="money block">
+      <view wx:for="{{money}}" wx:key="{{index}}" style="padding:0 50rpx;">
+        <image src="{{item.img}}" style="width:60rpx;height:60rpx;"></image>
+        <view style="font-size:22rpx;color:#777">{{item.name}}</view>
+        <view style="font-size:26rpx;color:#333">{{item.num}}</view>
+      </view>
+    </view>
+    <view class="action block" wx:for="{{action}}" wx:key="{{index}}">
+      <view class="action-title">
+        <view style="font-size:29rpx;">{{item.title}}</view>
+        <view style="font-size:24rpx;color:#aaa;" wx:if="{{item.sub}}" bindtap="toOrder">{{item.sub}}</view>
+      </view>
+      <view class="action-item">
+        <view wx:for="{{item.child}}" wx:key="{{index}}" style="width:160rpx;">
+          <image src="{{item.img}}" style="width:60rpx;height:60rpx;"></image>
+          <view style="font-size:24rpx;color:#555">{{item.name}}</view>
+        </view>
+      </view>
     </view>
   </view>
 </view>

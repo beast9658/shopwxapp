@@ -1,0 +1,24 @@
+.header-checked {
+  color: #ff552e;
+  border-bottom: 2rpx solid #ff552e;
+}
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.order-list {
+  margin: 150rpx 0;
+}
+.order-list-item-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx;
+  border-bottom: 2rpx solid #efefef;
+}
+.order-list-item {
+  width: 700rpx;
+  margin: 25rpx;
+  background: #fff;
+  border-radius: 30rpx;
+}
