@@ -46,3 +46,41 @@
   display: flex;
   justify-content: space-between;
 }
+
+
+.weui-demo-dialog{
+  visibility:hidden;
+  opacity:0;
+  transition:opacity .3s;
+}
+.weui-demo-dialog_show{
+  visibility:visible;
+  opacity:1;
+}
+
+.dialog-header,.dialog-footer,.dialog-body {
+  display: flex;
+  text-align: center;
+  margin: auto;
+  padding: 15rpx;
+  font-weight: normal;
+}
+.dialog-body {
+  font-size: 26rpx;
+  color: #777;
+}
+.dialog-footer view {
+  width: 185rpx;
+  padding: 20rpx;
+  border-radius: 70rpx;
+  font-size: 29rpx;
+  margin: 20rpx;
+}
+.sub-btn {
+  color: #6a6a6a;
+  border: 2rpx solid #dfdfdf;
+}
+.main-btn {
+  color: #fff;
+  background: linear-gradient(to right,#ff2527,#fe5017)
+}

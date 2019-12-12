@@ -57,6 +57,7 @@
           <view style="display:flex">
             <view>{{item.mes}}</view>
             <view style="padding:0 20rpx;color:#999;" wx:if="{{item.mes == '使用积分'}}">使用{{score}}积分抵用{{scoreToMoney}}元</view>
+            <view style="padding:0 20rpx;color:#ff3c25;" wx:if="{{item.mes == '优惠券'}}">{{item.mes2}}</view>
           </view>
           <view>
             
@@ -114,7 +115,7 @@
         <view class="bonus-body-left">
           <view class="bonus-body-left-item">
             <view class="{{item.got ? 'bonus-body-left-item-time' : 'bonus-body-left-item-price'}}"><view style="font-size:22rpx;float:left">￥</view><view style="font-size:44rpx">{{item.price}}</view></view>
-            <view class="{{item.got ? 'bonus-body-left-item-time' : 'bonus-body-left-item-need'}}" style="font-size:22rpx">满{{item.need}}元可用</view>
+            <view class="{{item.got ? 'bonus-body-left-item-time' : 'bonus-body-left-item-need'}}" style="font-size:22rpx">{{item.need}}</view>
             <view class="bonus-body-left-item-time" style="font-size:22rpx">有效期至{{item.time}}</view>
           </view>
         </view>
@@ -124,6 +125,7 @@
         </view>
       </view>
     </view>
+    <view class="nobonus" bindtap="noBonus">不使用优惠券</view>
     <view class="bonus-close" bindtap="closeBonus">关闭</view>
   </view>
 </view>

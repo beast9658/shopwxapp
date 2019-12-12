@@ -93,6 +93,15 @@
   
 }
 
+.nobonus {
+  width: 700rpx;
+  margin: 25rpx;
+  padding: 20rpx 0;
+  text-align: center;
+  border: 2rpx solid #000;
+  border-radius: 15rpx; 
+}
+
 
 .setwindow-footer-left {
   margin: auto 0;

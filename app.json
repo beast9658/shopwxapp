@@ -14,7 +14,11 @@
     "pages/afford/afford",
     "pages/address/address",
     "pages/addressEdit/addressEdit",
-    "pages/order/order"
+    "pages/order/order",
+    "pages/mineSet/mineSet",
+    "pages/mineMoney/mineMoney",
+    "pages/mineScore/mineScore",
+    "pages/shopAddress/shopAddress"
   ],
   "tabBar": {
     "custom": true,

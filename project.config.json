@@ -57,15 +57,22 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "订单",
-					"pathName": "pages/order/order",
+					"name": "我的",
+					"pathName": "pages/mine/mine",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "我的",
-					"pathName": "pages/mine/mine",
+					"id": 1,
+					"name": "结算",
+					"pathName": "pages/afford/afford",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "pages/mineMoney/mineMoney",
+					"pathName": "pages/mineMoney/mineMoney",
 					"query": "",
 					"scene": null
 				}

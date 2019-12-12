@@ -21,15 +21,18 @@ Component({
     money: [{
       img: '/image/0.2切图/积分.png',
       name: '积分',
-      num: 1000
+      num: 1000,
+      fun:'toMineScore'
     }, {
       img: '/image/0.2切图/余额.png',
       name: '余额',
-      num: 1000
+      num: 1000,
+      fun:'toMineMoney'
     }, {
       img: '/image/0.2切图/卡券.png',
       name: '卡券',
-      num: 1000
+      num: 1000,
+      fun:'toMineScore'
     }],
     action: [{
       title: '全部订单',
@@ -68,18 +71,56 @@ Component({
       sub: '',
       child: [{
         img: '/image/0.2切图/商家信息.png',
-        name: '商家信息'
+        name: '商家信息',
+        fun:'toShopMes'
       }, {
         img: '/image/0.2切图/联络商家.png',
-        name: '联络商家'
+        name: '联络商家',
+        fun:'openDialog'
       }]
-    }]
+    }],
+    phone:'12345678998'
   },
   methods: {
+    openDialog: function () {
+      this.setData({
+        istrue: true
+      })
+    },
+    closeDialog: function () {
+      this.setData({
+        istrue: false
+      })
+    },
+    phoneCall: function () {
+      wx.makePhoneCall({
+        phoneNumber: this.data.phone
+      })
+    },
     toOrder: function () {
       wx.navigateTo({
         url: '/pages/order/order',
       })
-    }
+    },
+    toSet: function () {
+      wx.navigateTo({
+        url: '/pages/mineSet/mineSet',
+      })
+    },
+    toMineScore: function () {
+      wx.navigateTo({
+        url: '/pages/mineScore/mineScore',
+      })
+    },
+    toMineMoney: function () {
+      wx.navigateTo({
+        url: '/pages/mineMoney/mineMoney',
+      })
+    },
+    toShopMes: function () {
+      wx.navigateTo({
+        url: '/pages/shopAddress/shopAddress',
+      })
+    },
   }
 })

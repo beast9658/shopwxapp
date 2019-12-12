@@ -5,27 +5,27 @@ Page({
    * 页面的初始数据
    */
   data: {
-    hasAddress:true,
-    address:{
-      name:'aaaa',
-      phone:'12345678901',
-      addressDetail:'XX市XX区XX街XX号44XX市XX区XX街XX号XX市XX区XX街XX号XX市XX区XX街XX号XX市XX区XX街XX号'
+    hasAddress: true,
+    address: {
+      name: 'aaaa',
+      phone: '12345678901',
+      addressDetail: 'XX市XX区XX街XX号44XX市XX区XX街XX号XX市XX区XX街XX号XX市XX区XX街XX号XX市XX区XX街XX号'
     },
-    goods:{
+    goods: {
       goodsItem: [{
         img: '/image/pic1.png',
         name: '手机热卖',
         price: '2.33',
-        itemSet:'红色',
-        buycount:2,
+        itemSet: '红色',
+        buycount: 2,
         sellCount: 100,
         nice: 3
       }, {
         img: '/image/pic1.png',
         name: '4567891596848热卖dsadsadsa564da8s的日日日4d1s5a156ddDsad大大撒旦撒打算e二二二',
         price: '205689.33',
-        itemSet:'红色',
-        buycount:1,
+        itemSet: '红色',
+        buycount: 1,
         sellCount: 150,
         nice: 5
       }, ],
@@ -37,7 +37,7 @@ Page({
       mes: "折扣",
       subMes: "3.0折",
       method: ""
-    },{
+    }, {
       hasIcon: true,
       hasSub: false,
       icon: "/image/满减.png",
@@ -56,6 +56,7 @@ Page({
       hasSub: true,
       icon: "/image/券.png",
       mes: "优惠券",
+      mes2: "",
       subMes: "使用",
       method: "getBonus"
     }, {
@@ -67,58 +68,58 @@ Page({
       subMes: "",
       method: "useScore",
     }],
-    scoreChecked:false,
+    scoreChecked: false,
     //优惠券
     showDialog: false,
+    useBonus: false,
     bonus: [{
       price: 20,
-      need: 100,
+      need: '满100减20',
       time: '2019年10月29日',
       got: false,
     }, {
-      price: 20,
-      need: 100,
+      price: 50,
+      need: '满100减50',
       time: '2019年10月29日',
-      got: true,
+      got: false,
     }],
     //支付方式
-    radioItems: [{ 
-      name: '微信支付', 
-      value: '0' ,
+    radioItems: [{
+      name: '微信支付',
+      value: '0',
       img: "/image/微信.png"
-      },{ 
-      name: '余额支付', 
-      value: '1', 
-      checked: true ,
+    }, {
+      name: '余额支付',
+      value: '1',
+      checked: true,
       img: "/image/余额.png"
-      }
-    ],
-    priceCount:'999.00',
-    clearPriceCount:'900.00',
-    initPriceCount:'',
-    score:999,
-    scoreToMoney:'',
-    getScore:'',
-    scoreRole:0.1,//积分抵现规则
-    itemType: 1,//0按priceCount（订单金额）计算积分，1按clearPriceCount（实付金额）计算积分
-    itemRole: 10,//金额抵积分规则
-    bonusCard:0
+    }],
+    priceCount: '999.00',
+    clearPriceCount: '900.00',
+    initPriceCount: '',
+    score: 999,
+    scoreToMoney: '',
+    getScore: '',
+    scoreRole: 0.1, //积分抵现规则
+    itemType: 1, //0按priceCount（订单金额）计算积分，1按clearPriceCount（实付金额）计算积分
+    itemRole: 10, //金额抵积分规则
+    bonusCard: 0
   },
-  
 
 
 
-  getBonus: function () {
+
+  getBonus: function() {
     this.setData({
       bonusistrue: true,
     })
   },
-  closeBonus: function () {
+  closeBonus: function() {
     this.setData({
       bonusistrue: false
     })
   },
-  getScoreMoney:function () {
+  getScoreMoney: function() {
     var scoreToMoney = this.data.scoreToMoney
     scoreToMoney = (this.data.score * this.data.scoreRole).toFixed(2)
     this.setData({
@@ -126,37 +127,80 @@ Page({
     })
   },
   /* 获得优惠券 */
-  bonusGot: function (e) {
+  bonusGot: function(e) {
     var num = e.currentTarget.dataset.index;
     var bonus = this.data.bonus
     var bonusCard = this.data.bonus[num].price
     var clearPriceCount = this.data.clearPriceCount
     var initPriceCount = this.data.initPriceCount
-    
-    if (bonus[num].got == false) {
+    var useBonus = this.data.useBonus
+    var bonusMes = this.data.action[3].mes2
+    if (useBonus == false) {
+      useBonus = true
+      bonus[num].got = true
+      initPriceCount = initPriceCount - bonusCard
+      clearPriceCount = initPriceCount
+    } else {
+      for (let i = 0; i < bonus.length; i++) {
+        if (bonus[i].got == true) {
+          initPriceCount = initPriceCount + this.data.bonus[i].price
+          clearPriceCount = initPriceCount
+        }
+        bonus[i].got = false
+      }
+      useBonus = true
       bonus[num].got = true
       initPriceCount = initPriceCount - bonusCard
       clearPriceCount = initPriceCount
     }
-    else {
-      bonus[num].got = false
-      initPriceCount = initPriceCount + bonusCard
-      clearPriceCount = initPriceCount
-    }
+    bonusMes = bonus[num].need
+    console.log(bonusMes)
     this.setData({
+      useBonus: useBonus,
       bonus: bonus,
       bonusCard: bonusCard,
       initPriceCount: initPriceCount,
-      clearPriceCount: clearPriceCount
+      clearPriceCount: clearPriceCount,
+      'action[3].mes2': bonusMes,
+      scoreChecked: false
     });
     this.scoreSet()
+    this.closeBonus()
   },
-  scoreSet:function (e) {
+  noBonus: function(e) {
+    var num = e.currentTarget.dataset.index;
+    var bonus = this.data.bonus
+    var clearPriceCount = this.data.clearPriceCount
+    var initPriceCount = this.data.initPriceCount
+    var useBonus = this.data.useBonus
+    var bonusMes = this.data.action[3].mes2
+
+    if (useBonus == true) {
+      for (let i = 0; i < bonus.length; i++) {
+        if (bonus[i].got == true) {
+          initPriceCount = initPriceCount + this.data.bonus[i].price
+          clearPriceCount = initPriceCount
+        }
+        bonus[i].got = false
+      }
+    }
+
+    this.setData({
+      useBonus: useBonus,
+      bonus: bonus,
+      initPriceCount: initPriceCount,
+      clearPriceCount: clearPriceCount,
+      'action[3].mes2': '',
+      scoreChecked: false
+    });
+    this.scoreSet()
+    this.closeBonus()
+  },
+  scoreSet: function(e) {
     var getScore = this.data.getScore
     if (this.data.itemType == 0) {
       getScore = (this.data.priceCount * this.data.itemRole).toFixed(0)
-    }
-    else {
+    } else {
       getScore = (this.data.clearPriceCount * this.data.itemRole).toFixed(0)
     }
     console.log(getScore)
@@ -164,14 +208,14 @@ Page({
       getScore: getScore
     });
   },
-  setInitPriceCount: function (e) {
+  setInitPriceCount: function(e) {
     var initPriceCount = this.data.clearPriceCount
     console.log(initPriceCount)
     this.setData({
       initPriceCount: initPriceCount
     })
   },
-  useScore: function (e) {
+  useScore: function(e) {
     var scoreChecked = this.data.scoreChecked
     var clearPriceCount = this.data.clearPriceCount
     var initPriceCount = clearPriceCount
@@ -179,22 +223,21 @@ Page({
     this.setData({
       scoreChecked: scoreChecked
     })
-    if (scoreChecked==true) {
+    if (scoreChecked == true) {
       clearPriceCount = (clearPriceCount - (this.data.score * this.data.scoreRole)).toFixed(2)
-    }
-    else {
+    } else {
       clearPriceCount = this.data.initPriceCount
       console.log(this.data.initPriceCount)
     }
-    if (clearPriceCount<0) {
-      clearPriceCount=0
+    if (clearPriceCount < 0) {
+      clearPriceCount = 0
     }
     this.setData({
       clearPriceCount: clearPriceCount
     })
     this.scoreSet()
   },
-  radioChange: function (e) {
+  radioChange: function(e) {
     console.log('radio发生change事件，携带value值为：', e.detail.value);
 
     var radioItems = this.data.radioItems;
@@ -206,7 +249,7 @@ Page({
       radioItems: radioItems
     });
   },
-  selectAddress: function () {
+  selectAddress: function() {
     wx.navigateTo({
       url: '/pages/address/address',
     })
@@ -214,7 +257,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.setInitPriceCount();
     this.scoreSet()
     this.getScoreMoney()
@@ -223,49 +266,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

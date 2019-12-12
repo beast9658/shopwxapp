@@ -1,0 +1,27 @@
+.weui-cell {
+  background: #fff
+}
+.section input ,.section view{
+  padding: 30rpx;
+}
+.section input {
+  text-align: right;
+}
+.section {
+  border-bottom: 2rpx solid #efefef;
+  display: flex;
+  justify-content: space-between;
+}
+.btn-area {
+  position: fixed;
+  bottom: 0;
+  width: 100%
+}
+.btn-area-save {
+  background: linear-gradient(to right,#ff2527,#fe5117);
+  color: #fff;
+}
+.head {
+  text-align: center;
+  margin: 50rpx 0;
+}

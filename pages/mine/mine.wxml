@@ -5,7 +5,7 @@
   <view class="mine">
     <view class="status block">
       <view style="display:flex">
-        <image src="{{user.head}}" style="width:90rpx;height:90rpx;margin-right:20rpx;"></image>
+        <image src="{{user.head}}" style="width:90rpx;height:90rpx;margin-right:20rpx;border-radius:50%"></image>
         <view>
           <view style="display:flex">
             <view style="font-size:32rpx;">{{user.account}}</view>
@@ -14,10 +14,10 @@
           <view style="color:#9f9f9f;font-size:24rpx;">会员ID：{{user.id}}</view>
         </view>
       </view>
-      <image src="/image/0.2切图/设置.png" style="width:35rpx;height:35rpx;margin:auto 0"></image>
+      <image src="/image/0.2切图/设置.png" style="width:35rpx;height:35rpx;margin:auto 0" bindtap="toSet"></image>
     </view>
     <view class="money block">
-      <view wx:for="{{money}}" wx:key="{{index}}" style="padding:0 50rpx;">
+      <view wx:for="{{money}}" wx:key="{{index}}" style="padding:0 50rpx;" bindtap="{{item.fun}}">
         <image src="{{item.img}}" style="width:60rpx;height:60rpx;"></image>
         <view style="font-size:22rpx;color:#777">{{item.name}}</view>
         <view style="font-size:26rpx;color:#333">{{item.num}}</view>
@@ -29,9 +29,28 @@
         <view style="font-size:24rpx;color:#aaa;" wx:if="{{item.sub}}" bindtap="toOrder">{{item.sub}}</view>
       </view>
       <view class="action-item">
-        <view wx:for="{{item.child}}" wx:key="{{index}}" style="width:160rpx;">
+        <view wx:for="{{item.child}}" wx:key="{{index}}" style="width:160rpx;" bindtap="{{item.fun}}">
           <image src="{{item.img}}" style="width:60rpx;height:60rpx;"></image>
           <view style="font-size:24rpx;color:#555">{{item.name}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="weui-demo-dialog {{istrue ? 'weui-demo-dialog_show' : ''}}">
+  <view class="weui-mask" bindtap="closeDialog"></view>
+  <view class="weui-dialog__wrp" bindtap="closeDialog">
+    <view class="weui-dialog" catchtap="stopEvent">
+      <view class="weui-dialog__bd">
+        <view class="dialog-header">
+          <image src="/image/0.2切图/形状625.png" style="width:35rpx;height:35rpx;margin:auto 15rpx;"></image>
+          <view style="font-size:32rpx;font-weight:bold;">联系商家</view>
+        </view>
+        <view class="dialog-body">商家电话：{{phone}}</view>
+        <view class="dialog-footer">
+          <view class="sub-btn" bindtap="closeDialog">取消</view>
+          <view class="main-btn" bindtap="phoneCall">呼叫</view>
         </view>
       </view>
     </view>
