@@ -71,8 +71,8 @@
 				},
 				{
 					"id": 2,
-					"name": "pages/mineMoney/mineMoney",
-					"pathName": "pages/mineMoney/mineMoney",
+					"name": "商家信息",
+					"pathName": "pages/shopAddress/shopAddress",
 					"query": "",
 					"scene": null
 				}

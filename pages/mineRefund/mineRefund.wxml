@@ -1,0 +1,41 @@
+<view class="page">
+  <view class="header">
+    <view class="weui-cells weui-cells_after-title">
+      <radio-group bindchange="radioChange" style="display:flex;justify-content: space-between;">
+        <label class="weui-cell weui-check__label {{item.checked ? 'header-checked' : ''}}" wx:for="{{radioItems}}" wx:key="value">
+          <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}" />
+          <view class="weui-cell__bd" style="font-size:29rpx;">{{item.name}}</view>
+        </label>
+      </radio-group>
+    </view>
+  </view>
+  <view class="order-list">
+    <view class="order-list-item" wx:for="{{orderList}}" wx:key="{{index}}">
+      <view class="order-list-item-header">
+        <view>订单号：{{item.orderNum}}</view>
+        <view style="color:#ff552e" wx:if="{{item.type==0}}">等待处理</view>
+        <view style="color:#27c061" wx:if="{{item.type==1}}">已退款</view>
+        <view style="color:#ff552e" wx:if="{{item.type==2}}">拒绝退款</view>
+      </view>
+      <view class="order-list-item-body">
+        <image src="{{item.img}}" style="width:120rpx;height:120rpx;padding-right:30rpx;"></image>
+        <view class="order-list-item-body-mes">
+          <view style="color:#333;font-size:29rpx;">{{item.name}}</view>
+          <view style="color:#999;font-size:24rpx;">{{item.itemSet}}</view>
+        </view>
+      </view>
+      <view class="order-list-item-footer">
+        <view class="order-list-item-footer-left">{{item.time}}</view>
+        <view class="order-list-item-footer-right" wx:if="{{item.type==0}}">
+          <view class="grey-btn">联系商家</view>
+        </view>
+        <view class="order-list-item-footer-right" wx:if="{{item.type==1}}">
+          <view class="grey-btn">再次购买</view>
+        </view>
+        <view class="order-list-item-footer-right" wx:if="{{item.type==2}}">
+          <view class="grey-btn">联系商家</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

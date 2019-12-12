@@ -1,0 +1,19 @@
+<view class="page">
+  <view class="goods-list">
+    <view class="goods-list-item" wx:for="{{goodsItem}}" wx:key="{{index}}">
+      <view class="goods-list-item-img">
+        <image src="{{item.img}}" style="width:180rpx;height:180rpx;padding:20rpx;"></image>
+      </view>
+      <view class="goods-list-item-mes">
+        <view class="goods-list-item-mes-name">{{item.name}}</view>
+        <view style="font-size:24rpx;color:#999;">{{item.collectcount}}人收藏</view>
+        <view style="display:flex;justify-content: space-between;">
+          <view style="color:#ff2b29;font-size:30rpx;">￥{{item.price}}</view>
+          <view bindtap="deleteCollection">
+            <image src="/image/删除.png" style="width:60rpx;height:60rpx;" data-index="{{index}}"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,44 +1,35 @@
-// pages/shopAddress/shopAddress.js
+// pages/allAppraise/allAppraise.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    shopMes: [{
-      title: '商城名称',
-      mes: 'XXXXXXXX'
+    //商品评价设置
+    appraise: [{
+      headicon: "/image/券.png",
+      nickname: '123456',
+      words: 'dsa1d5sa6d41a8w1d5w3a5ds4a61w51d6a',
+      imgs: ['/image/pic1.png', '/image/pic1.png', '/image/pic1.png', '/image/pic1.png', '/image/pic1.png'],
+      itemmes: {
+        img:'/image/pic1.png',
+        title:'商品名称',
+        itemset:'商品规格',
+        price:'31.00'
+      }
     }, {
-      title: '开店时间',
-      mes: '2019-03-14 12：00'
-    }, {
-      title: '营业时间',
-      mes: '8:00AM-9:00PM'
-    }, {
-      title: '店铺地址',
-      mes: '黑龙江省哈尔滨市南岗区和兴路'
-    }]
+      headicon: "/image/邮.png",
+      nickname: '123456',
+      words: 'dsa1d5sa6d41a8wsssssssssssssw51d6a',
+      imgs: ['/image/pic1.png', '/image/pic1.png', '/image/pic1.png', '/image/pic1.png'],
+      itemmes: {
+        img:'/image/pic1.png',
+        title:'商品名称',
+        itemset:'商品规格',
+        price:'31.00'
+      }
+    }, ],
   },
-  //地图组件
-  latitude: 23.099994,
-  longitude: 113.324520,
-  markers: [{
-    id: 1,
-    latitude: 23.099994,
-    longitude: 113.324520,
-    name: 'T.I.T 创意园'
-  }],
-  covers: [{
-    latitude: 23.099994,
-    longitude: 113.344520,
-    iconPath: '/image/location.png'
-  }, {
-    latitude: 23.099994,
-    longitude: 113.304520,
-    iconPath: '/image/location.png'
-  }],
-
-
 
   /**
    * 生命周期函数--监听页面加载
@@ -51,7 +42,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-    this.mapCtx = wx.createMapContext('myMap')
+
   },
 
   /**

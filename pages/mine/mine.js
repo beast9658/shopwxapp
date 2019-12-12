@@ -55,16 +55,20 @@ Component({
       sub: '',
       child: [{
         img: '/image/0.2切图/退款.png',
-        name: '我的退款'
+        name: '我的退款',
+        fun: 'toRefund'
       }, {
         img: '/image/0.2切图/我的评价.png',
-        name: '我的评价'
+        name: '我的评价',
+        fun: 'toAppraise'
       }, {
         img: '/image/0.2切图/我的收藏.png',
-        name: '我的收藏'
+        name: '我的收藏',
+        fun: 'toCollection'
       }, {
         img: '/image/0.2切图/地址管理.png',
-        name: '地址管理'
+        name: '地址管理',
+        fun: 'toAddress'
       }]
     }, {
       title: '商家',
@@ -120,6 +124,26 @@ Component({
     toShopMes: function () {
       wx.navigateTo({
         url: '/pages/shopAddress/shopAddress',
+      })
+    },
+    toAppraise: function () {
+      wx.navigateTo({
+        url: '/pages/mineAppraise/mineAppraise',
+      })
+    },
+    toRefund: function () {
+      wx.navigateTo({
+        url: '/pages/mineRefund/mineRefund',
+      })
+    },
+    toCollection: function () {
+      wx.navigateTo({
+        url: '/pages/mineCollection/mineCollection',
+      })
+    },
+    toAddress: function () {
+      wx.navigateTo({
+        url: '/pages/address/address',
       })
     },
   }

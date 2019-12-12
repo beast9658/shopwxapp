@@ -1,0 +1,30 @@
+<view class="page">
+  <view wx:for="{{appraise}}" wx:key="{{index}}">
+    <view class="item-appraise-has-head">
+      <view class="weui-cell" style="padding:20rpx 0">
+        <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+          <image src="{{item.headicon}}" style="width: 60rpx; height: 60rpx; display: block;border-radius:50%;" />
+        </view>
+        <view class="weui-cell__bd">
+          <view style="font-size:26rpx;color:#333;">{{item.nickname}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="item-appraise-has-body">
+      <view class="item-appraise-has-body-words">{{item.words}}</view>
+      <view class="item-appraise-has-body-imgs">
+        <image src="{{item}}" wx:for="{{item.imgs}}" wx:key="index" style="width:170rpx;height:170rpx;padding:2rpx;"></image>
+      </view>
+      <view class="item-appraise-has-body-size">
+        <view class="order-list-item-body">
+        <image src="{{item.itemmes.img}}" style="width:140rpx;height:140rpx;padding-right:30rpx;"></image>
+        <view class="order-list-item-body-mes">
+          <view style="color:#333;font-size:29rpx;">{{item.itemmes.title}}</view>
+          <view style="color:#999;font-size:24rpx;">{{item.itemmes.itemset}}</view>
+          <view style="color:#333;font-size:29rpx;">￥{{item.itemmes.price}}</view>
+        </view>
+      </view>
+      </view>
+    </view>
+  </view>
+</view>

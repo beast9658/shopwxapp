@@ -18,7 +18,10 @@
     "pages/mineSet/mineSet",
     "pages/mineMoney/mineMoney",
     "pages/mineScore/mineScore",
-    "pages/shopAddress/shopAddress"
+    "pages/shopAddress/shopAddress",
+    "pages/mineRefund/mineRefund",
+    "pages/mineAppraise/mineAppraise",
+    "pages/mineCollection/mineCollection"
   ],
   "tabBar": {
     "custom": true,
