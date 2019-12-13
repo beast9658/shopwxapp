@@ -1,3 +1,4 @@
+var app = getApp();
 Component({
   pageLifetimes: {
     show() {
@@ -278,7 +279,10 @@ Component({
     onLoad:function(option) {
       this.countItem();
       this.countPrice();
-      this.priceCountInt()
+      this.priceCountInt();
+    },
+    onShow: function (option){
+      this.list();
     },
     countItem: function () {
       var itemCount = this.data.checkboxItems.length
@@ -423,6 +427,26 @@ Component({
     toAfford: function(e) {
       wx.navigateTo({
         url: '/pages/afford/afford',
+      })
+    },
+    list(){
+      wx.request({
+        url: app.globalData.requestDomain+'/cart' ,
+        success:  (res) => {
+          console.log("查找成功：");
+          console.log(res);
+        
+          //this.data.checkboxItems = res.data.data;
+          this.setData({
+            checkboxItems: res.data.data
+          })
+          wx.hideLoading();
+        },
+        fail: function (res) {
+          console.log("查找失败：");
+          console.log(res);
+          wx.hideLoading();
+        }
       })
     }
   }
