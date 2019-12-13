@@ -39,16 +39,20 @@ Component({
       sub: '查看全部',
       child: [{
         img: '/image/0.2切图/待付款.png',
-        name: '待付款'
+        name: '待付款',
+        fun: 'toWaitPay'
       }, {
         img: '/image/0.2切图/待发货.png',
-        name: '待发货'
+        name: '待发货',
+        fun: 'toWaitSend'
       }, {
         img: '/image/0.2切图/待收货.png',
-        name: '待收货'
+          name: '待收货',
+          fun: 'toWaitReceipt'
       }, {
         img: '/image/0.2切图/待评价.png',
-        name: '待评价'
+        name: '待评价',
+        fun: 'toWaitComment'
       }]
     }, {
       title: '我的服务',
@@ -86,6 +90,41 @@ Component({
     phone:'12345678998'
   },
   methods: {
+    onLoad: function (options) {
+      this.getdatalist()
+    },
+    getdatalist: function () { //可在onLoad中设置为进入页面默认加载
+      var that = this;
+      wx.request({
+        url: 'http://192.168.1.194:8084/mine/minePage',
+        // data: {
+        // },
+        method: "GET",
+        success: function (res) {
+          // var arr1 = that.data.recommendItem; //从data获取当前datalist数组
+          // var arr2 = res.data.data.recommendItem; //从此次请求返回的数据中获取新数组
+          // console.log(arr2)
+          // console.log(that.data.pagenum)
+          // arr1 = arr1.concat(arr2); //合并数组
+          that.setData({
+            'user.account': res.data.mine.nickname,
+            'user.id': res.data.mine.member_id,
+            'user.head': res.data.mine.profile_photo,
+            'money[0].num': res.data.mine.member_integral,
+            'money[1].num': res.data.mine.member_balance,
+            'money[2].num': res.data.couponCount,
+            // 'action[0].child[0].': res.data.couponCount
+            'phone': res.data.mine.tel
+          })
+        console.log(res)
+
+        },
+        fail: function () {
+          console.log('fail')
+        }
+      })
+    },
+
     openDialog: function () {
       this.setData({
         istrue: true
@@ -104,6 +143,26 @@ Component({
     toOrder: function () {
       wx.navigateTo({
         url: '/pages/order/order',
+      })
+    },
+    toWaitPay:function () {
+      wx.navigateTo({
+        url: '/pages/order/order?type=1',
+      })
+    },
+    toWaitSend: function() {
+      wx.navigateTo({
+        url: '/pages/order/order?type=2',
+      })
+    },
+    toWaitReceipt: function () {
+      wx.navigateTo({
+        url: '/pages/order/order?type=3',
+      })
+    },
+    toWaitComment: function () {
+      wx.navigateTo({
+        url: '/pages/order/order?type=4',
       })
     },
     toSet: function () {
