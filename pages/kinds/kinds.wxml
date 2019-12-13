@@ -1,6 +1,6 @@
   <!--第一种格式-->
 
-<view class="page" wx:if="{{listStyle}}">
+<view class="page" wx:if="{{classKind != 3}}">
 
   <!--左侧栏-->
   <view class="nav_left-0{{classKind}}">
@@ -14,13 +14,13 @@
   <view class="nav_right-0{{classKind}}">
   <!--如果有数据，才遍历项-->
     <view wx:if="{{cateItems[0].ishaveChild}}">
-    <view>{{cateItems[curIndex].cate_name}}</view>
+    <view wx:if="{{classKind == 5}}">{{cateItems[curIndex].cate_name}}</view>
       <block wx:for="{{cateItems[curIndex].children}}" wx:key="unique">
         <view class="nav_right_items" data-id="{{item.DetailId}}" bindtap="isDetail"> 
           <image src="{{item.image}}" wx:if="{{showPic}}"></image>
           <view>
             <text>{{item.name}}</text>
-            <text style="margin-top: 5rpx;color:#ff5d45;font-size:28rpx;" wx:if="{{className.left=='nav_left-04'}}">￥{{item.price}}</text>
+            <text style="margin-top: 5rpx;color:#ff5d45;font-size:28rpx;" wx:if="{{classKind == 4}}">￥{{item.price}}</text>
           </view>
         </view>
       </block>
@@ -34,7 +34,7 @@
 
   <!--第二种格式-->
 
-  <view class="page-another" wx:if="{{!listStyle}}">
+  <view class="page-another" wx:if="{{classKind == 3}}">
     <view class="main">
       <view class="main-body" wx:for="{{cateItems}}" wx:key="unique">
         <view class="main-body-title">

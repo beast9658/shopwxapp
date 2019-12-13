@@ -160,27 +160,26 @@ Page({
       }]
 
   },
-  // imageLoad: function (e) {//获取图片真实宽度  
-  //   var imgwidth = e.detail.width,
-  //     imgheight = e.detail.height,
-  //     //宽高比  
-  //     ratio = imgwidth / imgheight;
-  //   console.log(imgwidth, imgheight)
-  //   //计算的高度值  
-  //   var viewHeight = 750 / ratio;
-  //   var imgheight = viewHeight;
-  //   var imgheights = this.data.imgheights;
-  //   //把每一张图片的对应的高度记录到数组里  
-  //   imgheights.push(imgheight) ;
-  //   this.setData({
-  //     imgheights: imgheights
-  //   })
-  //   console.log(imgwidth)
-  // },
-  // bindchange: function (e) {
-  //   // console.log(e.detail.current)
-  //   this.setData({ current: e.detail.current })
-  // },
+  imageLoad: function (e) {//获取图片真实宽度  
+    var imgwidth = e.detail.width;
+    var imgheight = e.detail.height;
+    //宽高比  
+    var ratio = imgwidth / imgheight;
+    //计算的高度值  
+    var viewHeight = 750 / ratio;
+    var imgheight = viewHeight;
+    var imgheights = this.data.imgheights;
+    console.log("imgheights11", imgheights)
+    //把每一张图片的对应的高度记录到数组里 +90是因为我给图片了一个width:100% 让图片宽撑满屏幕 如把100%去掉这个+90可去掉
+    imgheights[e.target.dataset.id] = imgheight;
+    console.log("imgheights22", imgheights)
+    this.setData({
+      imgheights: imgheights
+    })
+  },
+  bindchange: function (e) {
+    this.setData({ current: e.detail.current })
+  },
   openDialog: function () {
     var priceCount = this.data.setWindow.price
     this.setData({

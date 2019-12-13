@@ -122,95 +122,10 @@ Component({
         ishaveChild: false,
         children: []
       }
-      ,
-      {
-        cate_id: 4,
-        cate_name: "个人护理",
-        ishaveChild: false,
-        children: []
-      },
-      {
-        cate_id: 4,
-        cate_name: "个人护理",
-        ishaveChild: false,
-        children: []
-      },
-      {
-        cate_id: 4,
-        cate_name: "个人护理",
-        ishaveChild: false,
-        children: []
-      },
-      {
-        cate_id: 4,
-        cate_name: "个人护理",
-        ishaveChild: false,
-        children: []
-      },
-      {
-        cate_id: 4,
-        cate_name: "个人护理",
-        ishaveChild: false,
-        children: []
-      },
-      {
-        cate_id: 4,
-        cate_name: "个人护理",
-        ishaveChild: false,
-        children: []
-      },
-      {
-        cate_id: 4,
-        cate_name: "个人护理",
-        ishaveChild: false,
-        children: []
-      },
-      {
-        cate_id: 4,
-        cate_name: "个人护理",
-        ishaveChild: false,
-        children: []
-      },
-      {
-        cate_id: 4,
-        cate_name: "个人护理",
-        ishaveChild: false,
-        children: []
-      },
-      {
-        cate_id: 4,
-        cate_name: "个人护理",
-        ishaveChild: false,
-        children: []
-      },
-      {
-        cate_id: 4,
-        cate_name: "个人护理",
-        ishaveChild: false,
-        children: []
-      },
-      {
-        cate_id: 4,
-        cate_name: "个人护理",
-        ishaveChild: false,
-        children: []
-      },
-      {
-        cate_id: 4,
-        cate_name: "个人护理",
-        ishaveChild: false,
-        children: []
-      },
-      {
-        cate_id: 4,
-        cate_name: "个人护理",
-        ishaveChild: false,
-        children: []
-      }
     ],
     curNav: 1,
     curIndex: 0,
-    classKind: 5,
+    classKind: 1,
     showPic:true,
     listStyle:true
   },

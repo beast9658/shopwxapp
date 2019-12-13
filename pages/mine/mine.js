@@ -39,13 +39,16 @@ Component({
       sub: '查看全部',
       child: [{
         img: '/image/0.2切图/待付款.png',
-        name: '待付款'
+        name: '待付款',
+        num:1
       }, {
         img: '/image/0.2切图/待发货.png',
-        name: '待发货'
+        name: '待发货',
+        num:15
       }, {
         img: '/image/0.2切图/待收货.png',
-        name: '待收货'
+        name: '待收货',
+        num:0
       }, {
         img: '/image/0.2切图/待评价.png',
         name: '待评价'

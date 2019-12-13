@@ -79,7 +79,7 @@
             <image src="{{item.img}}" style="width: 30rpx; height: 30rpx; display: block;margin-right:20rpx;"></image>
             <view>{{item.name}}</view>
           </view>
-          <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+          <view class="weui-cell__ft weui-cell__ft_in-radio">
             <icon class="weui-icon-checkbox_circle" type="circle" size="20" wx:if="{{!item.checked}}"></icon>
             <icon class="weui-icon-checkbox_success" type="success" size="20" wx:if="{{item.checked}}"></icon>
           </view>
@@ -120,8 +120,8 @@
           </view>
         </view>
         <view class="bonus-body-right">
-          <view wx:if="{{item.got}}" style="color:#c9c9c9">已领取</view>
-          <view wx:else style="color:#ff3e2b">领取</view>
+          <view wx:if="{{item.got}}" style="color:#c9c9c9">已使用</view>
+          <view wx:else style="color:#ff3e2b">使用</view>
         </view>
       </view>
     </view>

@@ -23,14 +23,15 @@
 }
 .goods-list-item-mes-name {
   display:-webkit-box;
-  -webkit-line-clamp:2;
+  -webkit-line-clamp:1;
   overflow:hidden;
   text-overflow:ellipsis;
   -webkit-box-orient:vertical;
   word-break:break-all;
   font-size: 29rpx;
-  height: 100rpx;
-  line-height: 50rpx;
+  /* height: 100rpx; */
+  /* line-height: 50rpx; */
+  margin: 25rpx 0;
 }
 .goods .weui-cell {font-size: 26rpx;}
 .goods .weui-cell::before {
