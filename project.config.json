@@ -23,8 +23,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.9.3",
-	"appid": "wxc622c30e2317b9f4",
-	"projectname": "%E6%96%B0%E5%95%86%E4%BA%91%E5%B0%8F%E7%A8%8B%E5%BA%8F",
+	"appid": "wx8f84a31b27e6fa8a",
+	"projectname": "1234",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
@@ -71,8 +71,8 @@
 				},
 				{
 					"id": 2,
-					"name": "商家信息",
-					"pathName": "pages/shopAddress/shopAddress",
+					"name": "分类",
+					"pathName": "pages/kinds/kinds",
 					"query": "",
 					"scene": null
 				}

@@ -81,7 +81,7 @@
 }
 
 .footer-left-item-name {
-  font-size: 18rpx;
+  font-size: 22rpx;
   color: #666;
 }
 .footer-left {

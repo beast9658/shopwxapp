@@ -3,7 +3,7 @@
     <radio-group bindchange="radioChange">
       <view wx:for="{{radioItems}}" wx:key="value" class="address">
         <view class="address-item">
-          <view style="display: flex;font-size:32rpx">
+          <view style="display: flex;font-size:32rpx;justify-content: space-between;">
             <view>{{item.name}}</view>
             <view style="color:#999;padding-left:30rpx;">{{item.phone}}</view>
           </view>

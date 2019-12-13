@@ -268,7 +268,7 @@ Component({
       //   allPrice = '0.00'
       // }
       // else {
-        allPrice = (allPrice + parseFloat(this.data.send) + parseFloat(this.data.bonus)).toFixed(2)
+        // allPrice = (allPrice + parseFloat(this.data.send) + parseFloat(this.data.bonus)).toFixed(2)
       // }
       // console.log(price)
       // console.log(allPrice)
@@ -305,6 +305,15 @@ Component({
         setistrue: true,
         dialogId: dialogId
       })
+      wx.hideTabBar({
+        success:function () {
+          console.log(1234568)
+        },
+        fail: function() {
+          console.log(87543)
+        }
+      })
+      // console.log(this.getTabBar())
     },
     closeDialog: function () {
       this.setData({

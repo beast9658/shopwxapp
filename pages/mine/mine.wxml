@@ -29,9 +29,10 @@
         <view style="font-size:24rpx;color:#aaa;" wx:if="{{item.sub}}" bindtap="toOrder">{{item.sub}}</view>
       </view>
       <view class="action-item">
-        <view wx:for="{{item.child}}" wx:key="{{index}}" style="width:160rpx;" bindtap="{{item.fun}}">
+        <view wx:for="{{item.child}}" wx:key="{{index}}" style="width:160rpx;position: relative;" bindtap="{{item.fun}}">
           <image src="{{item.img}}" style="width:60rpx;height:60rpx;"></image>
           <view style="font-size:24rpx;color:#555">{{item.name}}</view>
+          <view class="action-item-num" wx:if="{{item.num}}">{{item.num}}</view>
         </view>
       </view>
     </view>

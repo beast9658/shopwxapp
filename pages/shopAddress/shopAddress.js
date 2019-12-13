@@ -17,6 +17,9 @@ Page({
     }, {
       title: '店铺地址',
       mes: '黑龙江省哈尔滨市南岗区和兴路'
+    }, {
+      title: '商城信息',
+      mes: 'blablalblablablablalblablablablalblablablablalblablablablalblabla'
     }]
   },
   //地图组件
