@@ -46,7 +46,19 @@
   display: flex;
   justify-content: space-between;
 }
-
+.action-item-num {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  color: #fff;
+  background: red;
+  border-radius: 50%;
+  width: 35rpx;
+  height: 35rpx;
+  text-align: center;
+  font-size: 22rpx;
+}
 
 .weui-demo-dialog{
   visibility:hidden;

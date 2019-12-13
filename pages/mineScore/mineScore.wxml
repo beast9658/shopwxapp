@@ -4,7 +4,7 @@
       <view class="weui-cell__bd">
         <view style="display: inline-block; vertical-align: middle">我的积分：{{scoreTotal}}</view>
       </view>
-      <view class="weui-cell__ft weui-cell__ft_in-access">积分兑换</view>
+      <!-- <view class="weui-cell__ft weui-cell__ft_in-access">积分兑换</view> -->
     </view>
   </view>
   <view class="list">

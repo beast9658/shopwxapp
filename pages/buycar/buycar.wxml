@@ -59,12 +59,12 @@
       <text>全选</text>
     </view>
     <view style="display:flex;">
-      <view style="padding:0 20rpx" wx:if="{{!editBuyCar}}">
-        <view style="font-size:29rpx">
+      <view style="padding:0 20rpx;margin:auto 0" wx:if="{{!editBuyCar}}">
+        <view style="font-size:29rpx;">
           <text>合计：</text>
           <text style="color:#ff3405;">￥{{allPriceCount}}</text>
         </view>
-        <text style="font-size:18rpx;color:#aaa;">配送费￥{{send}}，已优惠￥{{bonus}}</text>
+        <!-- <text style="font-size:22rpx;color:#aaa;line-height:20rpx;">配送费￥{{send}}，已优惠￥{{bonus}}</text> -->
       </view>
       <view class="footer-btn" wx:if="{{!editBuyCar}}" bindtap="toAfford">结算({{buyCarCount}})</view>
       <view class="footer-btn" wx:if="{{editBuyCar}}" bindtap="deleteBuyCar">删除</view>
@@ -73,9 +73,9 @@
 </view>
 
 
-<view class="weui-demo-dialog {{setistrue ? 'weui-demo-dialog_show' : ''}}">
+<view class="weui-demo-dialog {{setistrue ? 'weui-demo-dialog_show' : ''}}" >
   <view class="weui-mask" bindtap="closeDialog"></view>
-  <view class="weui-half-screen-dialog" catchtap="stopEvent" style="z-index:99999">
+  <view class="weui-half-screen-dialog" catchtap="stopEvent" style="margin-bottom:1000rpx;">
     <view class="setwindow">
       <view class="setwindow-head">
         <view class="weui-cell" style="padding:20rpx 0">

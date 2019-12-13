@@ -71,8 +71,8 @@
 				},
 				{
 					"id": 2,
-					"name": "商家信息",
-					"pathName": "pages/shopAddress/shopAddress",
+					"name": "分类",
+					"pathName": "pages/kinds/kinds",
 					"query": "",
 					"scene": null
 				}
