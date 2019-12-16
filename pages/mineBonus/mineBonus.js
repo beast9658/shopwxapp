@@ -35,18 +35,25 @@ Page({
       time: '2019年10月29日',
       status: 2
     }],
-    showRole:'item.status==0'
+    used:false
   },
   radioChange: function(e) {
     console.log('radio发生change事件，携带value值为：', e.detail.value);
-
+    var used = this.data.used
+    if (e.detail.value == 0) {
+      used=false
+    }
+    else {
+      used=true
+    }
     var radioItems = this.data.radioItems;
     for (var i = 0, len = radioItems.length; i < len; ++i) {
       radioItems[i].checked = radioItems[i].value == e.detail.value;
     }
-
+    console.log(used)
     this.setData({
-      radioItems: radioItems
+      radioItems: radioItems,
+      used: used
     });
   },
 

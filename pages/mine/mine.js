@@ -40,7 +40,8 @@ Component({
       child: [{
         img: '/image/0.2切图/待付款.png',
         name: '待付款',
-        fun: 'toWaitPay'
+        fun: 'toWaitPay',
+        num:6
       }, {
         img: '/image/0.2切图/待发货.png',
         name: '待发货',

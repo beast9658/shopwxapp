@@ -5,10 +5,17 @@
   display: flex;
   position: relative;
   flex-wrap: wrap;
+  padding: 30rpx 0;
 }
 .item-appraise-has-body-size {
   color: #868489;
   font-size: 24rpx;
+}
+.item-appraise-has-head-sub {
+  font-size:26rpx;
+  color:#333;
+  display: flex;
+  justify-content: space-between;
 }
 
 .order-list-item-body {
@@ -27,4 +34,15 @@
   -webkit-box-orient:vertical;
   word-break:break-all;
   line-height: 50rpx;
+}
+
+.extra {
+  padding: 30rpx 0;
+  border-top: 2rpx solid #777;
+}
+.item-appraise-has-head-sub-extra {
+  padding: 5rpx 20rpx;
+  border: 2rpx solid #777;
+  border-radius: 30rpx;
+  font-size: 22rpx;
 }

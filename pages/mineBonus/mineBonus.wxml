@@ -9,7 +9,7 @@
       </radio-group>
     </view>
   </view>
-  <view class="bonus">
+  <view class="bonus" wx:if="{{!used}}">
     <view class="bonus-body" wx:for="{{bonus}}" wx:key="{{index}}" data-index="{{index}}" style="background:url('/image/优惠券.png');background-size:100% 100%" bindtap="bonusGot" wx:if="{{item.status==0}}">
       <view class="bonus-body-left">
         <view class="bonus-body-left-item">
@@ -23,6 +23,25 @@
       </view>
       <view class="bonus-body-right">
         <view wx:if="{{item.got}}" style="color:#c9c9c9">已领取</view>
+        <view wx:if="{{item.status == 0}}" style="color:#ff3e2b">使用</view>
+      </view>
+    </view>
+  </view>
+  <view class="bonus" wx:if="{{used}}">
+    <view class="bonus-body" wx:for="{{bonus}}" wx:key="{{index}}" data-index="{{index}}" style="background:url('/image/优惠券.png');background-size:100% 100%" bindtap="bonusGot" wx:if="{{item.status!=0}}">
+      <view class="bonus-body-left">
+        <view class="bonus-body-left-item">
+          <view class="bonus-body-left-item-time">
+            <view style="font-size:22rpx;float:left">￥</view>
+            <view style="font-size:44rpx">{{item.price}}</view>
+          </view>
+          <view class="bonus-body-left-item-time" style="font-size:22rpx">满{{item.need}}元可用</view>
+          <view class="bonus-body-left-item-time" style="font-size:22rpx">有效期至{{item.time}}</view>
+        </view>
+      </view>
+      <view class="bonus-body-right">
+        <view wx:if="{{item.status == 1}}" style="color:#c9c9c9">已领取</view>
+        <view wx:if="{{item.status == 2}}" style="color:#c9c9c9">已失效</view>
         <view wx:if="{{item.status == 0}}" style="color:#ff3e2b">使用</view>
       </view>
     </view>

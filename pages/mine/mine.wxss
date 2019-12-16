@@ -50,7 +50,7 @@
   position: absolute;
   z-index: 100;
   top: 0;
-  right: 0;
+  right: 30rpx;
   color: #fff;
   background: red;
   border-radius: 50%;

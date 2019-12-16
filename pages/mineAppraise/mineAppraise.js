@@ -11,17 +11,23 @@ Page({
       nickname: '123456',
       words: 'dsa1d5sa6d41a8w1d5w3a5ds4a61w51d6a',
       imgs: ['/image/pic1.png', '/image/pic1.png', '/image/pic1.png', '/image/pic1.png', '/image/pic1.png'],
+      time:'2019.07.22',
       itemmes: {
         img:'/image/pic1.png',
         title:'商品名称',
         itemset:'商品规格',
         price:'31.00'
+      },
+      extra:{
+        words: 'dsa1d5sa6d41a8w1d5w3a5ds4a61w51d6a',
+        imgs: ['/image/pic1.png', '/image/pic1.png', '/image/pic1.png', '/image/pic1.png', '/image/pic1.png'],
       }
     }, {
       headicon: "/image/邮.png",
       nickname: '123456',
       words: 'dsa1d5sa6d41a8wsssssssssssssw51d6a',
       imgs: ['/image/pic1.png', '/image/pic1.png', '/image/pic1.png', '/image/pic1.png'],
+      time:'2019.07.22',
       itemmes: {
         img:'/image/pic1.png',
         title:'商品名称',

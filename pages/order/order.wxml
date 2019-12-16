@@ -20,13 +20,18 @@
         <view style="color:#ff552e" wx:if="{{item.type==4}}">已完成</view>
         <view wx:if="{{item.type==5}}">关闭交易</view>
       </view>
-      <view class="order-list-item-body">
+      <view class="order-list-item-body" wx:for="{{item.items}}" wx:key="{{index}}" wx:if="{{index<3}}">
         <image src="{{item.img}}" style="width:120rpx;height:120rpx;padding-right:30rpx;"></image>
         <view class="order-list-item-body-mes">
           <view style="color:#333;font-size:29rpx;">{{item.name}}</view>
           <view style="color:#999;font-size:24rpx;">{{item.itemSet}}</view>
         </view>
+        <view class="order-list-item-body-submes">
+          <view style="color:#333;font-size:29rpx;">￥{{item.price}}</view>
+          <view style="color:#999;font-size:24rpx;">X{{item.count}}</view>
+        </view>
       </view>
+      <view class="order-list-item-body-total">共{{item.itemCount}}件商品 合计：￥{{item.total}}</view>
       <view class="order-list-item-footer">
         <view class="order-list-item-footer-left">{{item.time}}</view>
         <view class="order-list-item-footer-right" wx:if="{{item.type==0}}">
@@ -34,14 +39,17 @@
           <view class="orange-btn">去支付</view>
         </view>
         <view class="order-list-item-footer-right" wx:if="{{item.type==1}}">
-          <view class="grey-btn">取消订单</view>
+          <view class="grey-btn">申请退款</view>
           <view class="grey-btn">联系商家</view>
         </view>
         <view class="order-list-item-footer-right" wx:if="{{item.type==2}}">
+          <view class="grey-btn">申请退款</view>
+          <view class="grey-btn">联系商家</view>
           <view class="grey-btn">查看物流</view>
           <view class="orange-btn">确认收货</view>
         </view>
         <view class="order-list-item-footer-right" wx:if="{{item.type==3}}">
+          <view class="grey-btn">申请退款</view>
           <view class="grey-btn">去评价</view>
         </view>
         <view class="order-list-item-footer-right" wx:if="{{item.type==4}}">

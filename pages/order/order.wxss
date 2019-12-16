@@ -14,7 +14,7 @@
   display: flex;
   justify-content: space-between;
   padding: 30rpx;
-  border-bottom: 2rpx solid #efefef;
+  
 }
 .order-list-item {
   width: 700rpx;
@@ -24,32 +24,41 @@
 }
 .order-list-item-body {
   display: flex;
+  justify-content: space-between;
   padding: 30rpx;
+  border-bottom: 2rpx solid #efefef;
+  border-top: 2rpx solid #efefef;
 }
 .order-list-item-body-mes {
-  width: 500rpx;
+  width: 300rpx;
 }
 .order-list-item-body-mes view {
   display:-webkit-box;
-  -webkit-line-clamp:1;
+  -webkit-line-clamp:2;
   overflow:hidden;
   text-overflow:ellipsis;
   -webkit-box-orient:vertical;
   word-break:break-all;
   line-height: 50rpx;
 }
+.order-list-item-body-submes {
+  padding: 5rpx 20rpx; 
+}
 .order-list-item-footer {
-  display: flex;
-  justify-content: space-between;
+  /* display: flex;
+  justify-content: space-between; */
   padding: 30rpx;
+  text-align: right;
 }
 .order-list-item-footer-left {
   font-size: 24rpx;
   color: #999;
   margin: auto 0;
+  padding-bottom: 20rpx;
 }
 .order-list-item-footer-right {
-  display: flex
+  display: flex;
+  justify-content: flex-end;
 }
 .order-list-item-footer-right view {
   width: 150rpx;
@@ -66,4 +75,10 @@
 .orange-btn {
   color: #ff552e;
   border: 2rpx solid #ff552e;
+}
+
+.order-list-item-body-total {
+  font-size: 24rpx;
+  padding: 20rpx 50rpx;
+  text-align: right;
 }
