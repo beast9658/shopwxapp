@@ -71,8 +71,8 @@
 				},
 				{
 					"id": 2,
-					"name": "分类",
-					"pathName": "pages/kinds/kinds",
+					"name": "商品详情",
+					"pathName": "pages/goodsDetail/goodsDetail",
 					"query": "",
 					"scene": null
 				}

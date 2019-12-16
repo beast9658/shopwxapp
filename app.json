@@ -21,7 +21,8 @@
     "pages/shopAddress/shopAddress",
     "pages/mineRefund/mineRefund",
     "pages/mineAppraise/mineAppraise",
-    "pages/mineCollection/mineCollection"
+    "pages/mineCollection/mineCollection",
+    "pages/mineBonus/mineBonus"
   ],
   "tabBar": {
     "custom": true,

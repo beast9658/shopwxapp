@@ -10,3 +10,8 @@
   color: #868489;
   font-size: 24rpx;
 }
+.item-appraise-has-item {
+  margin: 20rpx 0;
+  background: #fff;
+  padding: 20rpx;
+}

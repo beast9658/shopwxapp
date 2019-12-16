@@ -1,0 +1,42 @@
+.header-checked {
+  color: #ff552e;
+  border-bottom: 2rpx solid #ff552e;
+}
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.bonus {
+  margin-top: 150rpx;
+}
+.bonus-body {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 30rpx;
+  margin: 30rpx 80rpx;
+  position: relative;
+}
+.bonus-body-left-item-price {
+  display: flex;
+  color: #fa482b;
+}
+.bonus-body-right {
+  font-size: 29rpx;
+  width: 30rpx;
+  margin: auto 0;
+}
+.bonus-body-left-item-need {
+  color: #555;
+}
+.bonus-body-left-item-time {
+  color: #b2b2b2;
+}
+.bonus-close {
+  padding: 30rpx;
+  margin: 0 !important;
+  background: linear-gradient(to right,#ff2527,#fe5117);
+  text-align: center;
+  color: #fff;
+}

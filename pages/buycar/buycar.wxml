@@ -52,7 +52,7 @@
   </view>
   <view class="buycar-footer">
     <view style="display:flex;margin:auto 0;" bindtap="{{!editBuyCar? 'allSelect' : 'allSelectAno'}}">
-      <view class="weui-cell__hd weui-check__hd_in-checkbox" style="padding:0">
+      <view class="weui-cell__hd weui-check__hd_in-checkbox" style="padding:0；margin-right:30rpx;">
         <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!isAllSelect}}"></icon>
         <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{isAllSelect}}"></icon>
       </view>
@@ -75,7 +75,7 @@
 
 <view class="weui-demo-dialog {{setistrue ? 'weui-demo-dialog_show' : ''}}" >
   <view class="weui-mask" bindtap="closeDialog"></view>
-  <view class="weui-half-screen-dialog" catchtap="stopEvent" style="margin-bottom:1000rpx;">
+  <view class="weui-half-screen-dialog" catchtap="stopEvent" style="margin-bottom:90rpx;">
     <view class="setwindow">
       <view class="setwindow-head">
         <view class="weui-cell" style="padding:20rpx 0">

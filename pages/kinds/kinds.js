@@ -125,7 +125,7 @@ Component({
     ],
     curNav: 1,
     curIndex: 0,
-    classKind: 1,
+    classKind: 5,//分类样式种类，1-5
     showPic:true,
     listStyle:true
   },

@@ -45,7 +45,9 @@
   display: inline-block;
 }
 .recommend-item-body {
- padding: 15rpx
+ margin: 5rpx;
+ padding: 10rpx;
+ background: #fff;
 }
 .recommend .recommend-item-body-title {
   display:-webkit-box;

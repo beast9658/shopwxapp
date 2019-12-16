@@ -32,7 +32,7 @@ Component({
       img: '/image/0.2切图/卡券.png',
       name: '卡券',
       num: 1000,
-      fun:'toMineScore'
+      fun:'toMineBonus'
     }],
     action: [{
       title: '全部订单',
@@ -203,6 +203,11 @@ Component({
     toAddress: function () {
       wx.navigateTo({
         url: '/pages/address/address',
+      })
+    },
+    toMineBonus: function () {
+      wx.navigateTo({
+        url: '/pages/mineBonus/mineBonus',
       })
     },
   }

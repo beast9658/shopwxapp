@@ -41,6 +41,11 @@
   font-size: 28rpx;
   padding: 30rpx 0;
 }
+.item-appraise-has-item {
+  margin: 20rpx 0;
+  background: #fff;
+  padding: 20rpx;
+}
 .item-appraise-has-body-imgs {
   display: flex;
   position: relative;
@@ -270,7 +275,6 @@
   background: linear-gradient(to right,#ff2527,#fe5117);
   text-align: center;
   color: #fff;
-  
 }
 
 /* 分享弹窗 */

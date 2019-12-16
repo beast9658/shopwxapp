@@ -1,5 +1,5 @@
 <view class="page">
-  <view wx:for="{{appraise}}" wx:key="{{index}}">
+  <view wx:for="{{appraise}}" wx:key="{{index}}" class="item-appraise-has-item">
     <view class="item-appraise-has-head">
       <view class="weui-cell" style="padding:20rpx 0">
         <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">

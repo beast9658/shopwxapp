@@ -33,7 +33,7 @@
       <view class="item-appraise-title">商品评价({{appraise.length}})</view>
       <view wx:if="{{appraise.length==0}}" class="item-appraise-none">暂无评论</view>
       <view wx:else class="item-appraise-has">
-        <view wx:for="{{appraise}}" wx:key="{{index}}" wx:if="{{index<2}}">
+        <view wx:for="{{appraise}}" wx:key="{{index}}" wx:if="{{index<2}}" class="item-appraise-has-item">
           <view class="item-appraise-has-head">
             <view class="weui-cell" style="padding:20rpx 0">
               <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">

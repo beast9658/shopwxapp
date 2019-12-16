@@ -25,7 +25,9 @@
   display: inline-block;
 }
 .recommend .recommend-item-body {
- padding: 15rpx
+ margin: 5rpx;
+ padding: 10rpx;
+ background: #fff;
 }
 .recommend .recommend-item-body-title {
   display:-webkit-box;
@@ -44,9 +46,11 @@
   width: 100%;
 }
 .recommend-ano .recommend-item-body {
- padding: 15rpx 0;
+ padding: 5rpx 0;
+ margin: 10rpx 0;
  display: flex;
  flex-wrap: wrap;
+ background: #fff;
 }
 
 .recommend-ano .recommend-item-body-pic {
