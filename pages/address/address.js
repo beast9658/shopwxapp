@@ -9,13 +9,13 @@ Page({
     radioItems: [{
         name: '王先生',
         phone:'12345678901',
-
         address:'XX',
         province:'XX',
         city: 'XX',
         county: 'XX',
         value: '0',
-        id:'123'
+        id:'123',
+        value: '0'
       },
       {
         name: '王先生',
