@@ -15,9 +15,10 @@ Page({
     }]
   },
   toIndex: function () {
-    wx.navigateTo({
-      url: '/pages/index/index',
+    wx.navigateBack({
+      delta: 3,
     })
+    console.log(123)
   },
   toAppraise: function () {
     wx.navigateTo({

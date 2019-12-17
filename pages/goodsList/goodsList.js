@@ -77,7 +77,8 @@ Page({
       checked: false,
       fun: 'niceSort',
       value:3
-    }]
+    }],
+    pagenum: 1, //初始页默认值为1
   },
   toSearch: function () {
     wx.navigateTo({
@@ -143,6 +144,31 @@ Page({
       listSort: listSort
     })
   },
+  getdatalist: function () { //可在onLoad中设置为进入页面默认加载
+    var that = this;
+    wx.request({
+      url: 'https://www.fastmock.site/mock/699715a194ca93058fa372074d4318a1/itemlist/recommendItem',
+      data: {
+        "key": "0",
+        "pageNum": that.data.pagenum, //从数据里获取当前页数
+        "pageSize": 10, //每页显示条数
+      },
+      method: "POST",
+      success: function (res) {
+        var arr1 = that.data.recommendItem; //从data获取当前datalist数组
+        var arr2 = res.data.data.recommendItem; //从此次请求返回的数据中获取新数组
+        console.log(arr2)
+        console.log(that.data.pagenum)
+        arr1 = arr1.concat(arr2); //合并数组
+        that.setData({
+          recommendItem: arr1 //合并后更新datalist
+        })
+
+      },
+      fail: function (err) { },//请求失败
+      complete: function () { }//请求完成后执行的函数
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -190,7 +216,12 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    var that = this;
+    var pagenum = that.data.pagenum + 1; //获取当前页数并+1
+    that.setData({
+      pagenum: pagenum, //更新当前页数
+    })
+    that.getdatalist();//重新调用请求获取下一页数据
   },
 
   /**
