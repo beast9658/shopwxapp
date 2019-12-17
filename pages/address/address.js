@@ -15,7 +15,6 @@ Page({
         county: 'XX',
         value: '0',
         id:'123',
-        value: '0'
       },
       {
         name: '王先生',
