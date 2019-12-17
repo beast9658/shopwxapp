@@ -1,4 +1,5 @@
 // pages/address/address.js
+var app = getApp();
 Page({
 
   /**
@@ -8,8 +9,11 @@ Page({
     radioItems: [{
         name: '王先生',
         phone:'12345678901',
-        address:'XX市XX区XX街ds45a98w4d545dsa1ds5a6dwa1e3w2e1w',
-        addressDetail:'XX小区XX栋XX室489rq4wer651qw5e6w2dsa15d8w974d968awd1dsa6d8w4a6wd1w',
+
+        address:'XX',
+        province:'XX',
+        city: 'XX',
+        county: 'XX',
         value: '0',
         id:'123'
       },
@@ -36,6 +40,8 @@ Page({
       radioItems: radioItems
     });
   },
+ 
+
   addAddress: function () {
     wx.navigateTo({
       url: '/pages/addressEdit/addressEdit',
@@ -52,7 +58,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    this.getAddrList()
+  },
 
+  getAddrList: function () {
+    var that = this;
+    wx.request({
+      url: app.globalData.requestDomain + '/address/addressList',
+      method: 'GET',
+      success: function (r) {
+        console.log(r)
+        that.setData({
+          radioItems:r.data.addrData.list
+        })
+      },
+      fail: function () {
+        console.log('FAIL')
+      }
+    })
   },
 
   /**
