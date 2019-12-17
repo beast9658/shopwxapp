@@ -7,7 +7,7 @@
             <view>{{item.name}}</view>
             <view style="color:#999;padding-left:30rpx;">{{item.phone}}</view>
           </view>
-          <view class="address-item-address">{{item.address}}{{item.addressDetail}}</view>
+          <view class="address-item-address">{{item.province}} {{item.city}} {{item.county}} {{item.address}}</view>
         </view>
         <label class="weui-cell weui-check__label" style="font-size:26rpx;">
           <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}" />
@@ -17,7 +17,7 @@
           </view>
           <view class="weui-cell__bd">默认地址</view>
           <view class="address-action">
-            <view>修改</view>
+            <view bindtap="changeAddress" data-id="{{item.id}}">修改</view>
             <view>删除</view>
           </view>
         </label>

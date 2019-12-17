@@ -70,6 +70,7 @@
       <view class="footer-btn" wx:if="{{editBuyCar}}" bindtap="deleteBuyCar">删除</view>
     </view>
   </view>
+  <view class="login-btn" bindtap="login">登录</view>
 </view>
 
 

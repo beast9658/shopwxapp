@@ -9,7 +9,7 @@
         <view>
           <view style="display:flex">
             <view style="font-size:32rpx;">{{user.account}}</view>
-            <view class="sign">签到</view>
+            <view class="sign" bindtap="dayCheck">签到</view>
           </view>
           <view style="color:#9f9f9f;font-size:24rpx;">会员ID：{{user.id}}</view>
         </view>

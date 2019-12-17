@@ -1,4 +1,5 @@
 // pages/addressEdit/addressEdit.js
+var app = getApp();
 Page({
 
   /**
@@ -6,9 +7,28 @@ Page({
    */
   data: {
     region: [],
+    setIndex:''
   },
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    console.log('form发生了submit事件，携带数据为：', e.detail.value.name)
+
+   
+    wx.request({
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      url: app.globalData.requestDomain + '/address/addsave',
+      data: {
+        'data': JSON.stringify(e.detail.value)
+      },
+      method:"post",
+     
+      success:function (r){
+        console.log(r)
+      }
+    })
+
   },
   formReset: function () {
     console.log('form发生了reset事件')
@@ -23,7 +43,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // setIndex: options.id
+    this.setData({
+      setIndex: options.id
+    })
+    console.log(options.id)
+    console.log(this.data.setIndex)
   },
 
   /**

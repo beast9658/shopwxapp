@@ -64,8 +64,8 @@
 				},
 				{
 					"id": 1,
-					"name": "结算",
-					"pathName": "pages/afford/afford",
+					"name": "评价成功",
+					"pathName": "pages/successAppraise/successAppraise",
 					"query": "",
 					"scene": null
 				},

@@ -1,0 +1,19 @@
+.logistics-head,.logistics-body {
+  width: 700rpx;
+  margin: 25rpx;
+  background: #fff;
+  border-radius: 15rpx;
+  padding: 20rpx 0;
+}
+.logistics-head view {
+  padding: 10rpx 30rpx;
+}
+.logistics-body-detail-item-mes {
+  font-size: 26rpx;
+  color: #999;
+  width: 550rpx;
+}
+.logistics-body-goods {
+  display: flex;
+  
+}

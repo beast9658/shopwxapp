@@ -22,7 +22,9 @@
     "pages/mineRefund/mineRefund",
     "pages/mineAppraise/mineAppraise",
     "pages/mineCollection/mineCollection",
-    "pages/mineBonus/mineBonus"
+    "pages/mineBonus/mineBonus",
+    "pages/logistics/logistics",
+    "pages/successAppraise/successAppraise"
   ],
   "tabBar": {
     "custom": true,

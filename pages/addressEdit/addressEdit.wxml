@@ -10,16 +10,16 @@
       </view>
       <view class="section">
         <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
-          <input name="address" placeholder="收货地址" value="{{region[0]}}{{region[1]}}{{region[2]}}"/>
+          <input name="province" placeholder="收货地址" value="{{region[0]}} {{region[1]}} {{region[2]}}"/>
         </picker>
       </view>
       <view class="section">
         <!-- <input name="adderssDetail" class="address-select" type="textarea" placeholder="详细地址：如街道、门牌号、小区、楼栋号、单元室等" /> -->
-        <textarea placeholder="详细地址：如街道、门牌号、小区、楼栋号、单元室等" name="adderssDetail"/>
+        <textarea placeholder="详细地址：如街道、门牌号、小区、楼栋号、单元室等" name="address"/>
       </view>
       <view class="section section_gap address-set">
         <view class="section__title">设为默认地址</view>
-        <switch name="switch" />
+        <switch name="isDefault" />
       </view>
       <view class="btn-area">
         <button formType="submit" class="btn-area-save">保存</button>

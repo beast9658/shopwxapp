@@ -1,3 +1,4 @@
+var app = getApp();
 Component({
   pageLifetimes: {
     show() {
@@ -45,15 +46,18 @@ Component({
       }, {
         img: '/image/0.2切图/待发货.png',
         name: '待发货',
-        fun: 'toWaitSend'
+        fun: 'toWaitSend',
+        num: 6
       }, {
         img: '/image/0.2切图/待收货.png',
           name: '待收货',
-          fun: 'toWaitReceipt'
+          fun: 'toWaitReceipt',
+          num: 6
       }, {
         img: '/image/0.2切图/待评价.png',
         name: '待评价',
-        fun: 'toWaitComment'
+        fun: 'toWaitComment',
+        num: 6
       }]
     }, {
       title: '我的服务',
@@ -97,7 +101,7 @@ Component({
     getdatalist: function () { //可在onLoad中设置为进入页面默认加载
       var that = this;
       wx.request({
-        url: 'http://192.168.1.194:8084/mine/minePage',
+        url: app.globalData.requestDomain +'/mine/minePage',
         // data: {
         // },
         method: "GET",
@@ -114,7 +118,10 @@ Component({
             'money[0].num': res.data.mine.member_integral,
             'money[1].num': res.data.mine.member_balance,
             'money[2].num': res.data.couponCount,
-            // 'action[0].child[0].': res.data.couponCount
+            'action[0].child[0].num': res.data.waitOrderNum,
+            'action[0].child[1].num': res.data.waitSendOrderNum,
+            'action[0].child[2].num': res.data.pendingReceiptNum,
+            'action[0].child[3].num': res.data.commentOrderNum,
             'phone': res.data.mine.tel
           })
         console.log(res)
@@ -125,7 +132,17 @@ Component({
         }
       })
     },
+    
+    dayCheck: function() {
+      wx.request({
+        url: app.globalData.requestDomain +'/mine/addCheckIntegral',
+        method: "GET",
+        success:function (r){
+          console.log(r)
+        }
 
+      })
+    },
     openDialog: function () {
       this.setData({
         istrue: true
