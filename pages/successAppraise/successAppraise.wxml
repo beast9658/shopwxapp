@@ -1,2 +1,26 @@
-<!--pages/successAppraise/successAppraise.wxml-->
-<text>pages/successAppraise/successAppraise.wxml</text>
+<view class="page">
+  <view class="background-img">
+    <image src="/image/bg2.png" style="width: 750rpx;height:350rpx"></image>
+  </view>
+  <view class="appraise-head">
+    <view style="display: flex;margin:30rpx;justify-content:center;">
+      <image src="/image/客服01.png" style="width:35rpx;height:35rpx;margin:auto 20rpx"></image>
+      <text style="color:#fff">评价成功</text>
+    </view>
+    <view style="color:#eee;text-align:center;font-size:24rpx;margin:auto">您已获得{{score}}积分，请再接再厉!</view>
+    <view style="display: flex;margin:30rpx;justify-content:center;color:#fff;font-size:24rpx;">
+      <view class="appraise-head-btn" bindtap="toIndex">返回首页</view>
+      <view class="appraise-head-btn" bindtap="toAppraise">查看评价</view>
+    </view>
+  </view>
+  <view style="color:#777;font-size:29rpx;text-align:center;padding:20rpx;">以下商品待评价</view>
+  <view class="appraise-body">
+    <view class="appraise-body-item" wx:for="{{needAppraise}}" wx:key="{{index}}">
+      <image src="{{item.img}}" style="width:180rpx;height:180rpx;margin-right:30rpx;"></image>
+      <view class="appraise-body-item-body">
+        <view class="appraise-body-item-body-mes">{{item.mes}}</view>
+        <view class="appraise-body-item-body-btn">去评价</view>
+      </view>
+    </view>
+  </view>
+</view>

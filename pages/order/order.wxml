@@ -45,7 +45,7 @@
         <view class="order-list-item-footer-right" wx:if="{{item.type==2}}">
           <view class="grey-btn">申请退款</view>
           <view class="grey-btn">联系商家</view>
-          <view class="grey-btn">查看物流</view>
+          <view class="grey-btn" bindtap="toLogistics">查看物流</view>
           <view class="orange-btn">确认收货</view>
         </view>
         <view class="order-list-item-footer-right" wx:if="{{item.type==3}}">

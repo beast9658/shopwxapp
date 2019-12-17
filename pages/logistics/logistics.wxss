@@ -13,3 +13,7 @@
   color: #999;
   width: 550rpx;
 }
+.logistics-body-goods {
+  display: flex;
+  
+}

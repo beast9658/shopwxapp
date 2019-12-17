@@ -10,7 +10,8 @@ Page({
         phone:'12345678901',
         address:'XX市XX区XX街ds45a98w4d545dsa1ds5a6dwa1e3w2e1w',
         addressDetail:'XX小区XX栋XX室489rq4wer651qw5e6w2dsa15d8w974d968awd1dsa6d8w4a6wd1w',
-        value: '0'
+        value: '0',
+        id:'123'
       },
       {
         name: '王先生',
@@ -18,7 +19,8 @@ Page({
         address: 'XX市XX区XX街',
         addressDetail: 'XX小区XX栋XX室',
         value: '1',
-        checked: true
+        checked: true,
+        id:'456'
       }
     ],
   },
@@ -39,7 +41,13 @@ Page({
       url: '/pages/addressEdit/addressEdit',
     })
   },
-
+  changeAddress: function (e) {
+    console.log(e.currentTarget.dataset.id)
+    var id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/addressEdit/addressEdit?id='+id,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
