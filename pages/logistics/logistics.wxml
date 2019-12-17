@@ -1,0 +1,20 @@
+<view class="page">
+  <view class="logistics-head">
+    <view style="font-size:34rpx;color:#333">{{logisticsName}}</view>
+    <view style="font-size:28rpx;color:#777">物流单号：{{logisticsNum}}</view>
+  </view>
+  <view class="logistics-body">
+    <view class="logistics-body-goods">
+      <image src="" wx:for=""></image>
+    </view>
+    <view class="logistics-body-detail">
+      <view class="logistics-body-detail-item" wx:for="{{logisticsItems}}" wx:key="{{index}}" style="display:flex;margin:65rpx 0;">
+        <image src="{{item.img}}" style="width:50rpx;height:50rpx;margin:0 30rpx;"></image>
+        <view class="logistics-body-detail-item-mes">
+          <view>{{item.mes}}</view>
+          <view>{{item.time}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

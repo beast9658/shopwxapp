@@ -64,8 +64,8 @@
 				},
 				{
 					"id": 1,
-					"name": "结算",
-					"pathName": "pages/afford/afford",
+					"name": "物流",
+					"pathName": "pages/logistics/logistics",
 					"query": "",
 					"scene": null
 				},

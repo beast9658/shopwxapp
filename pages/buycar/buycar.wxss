@@ -212,3 +212,16 @@
   color: #fff;
   text-align: center;
 }
+
+.login-btn {
+  width: 100rpx;
+  padding: 20rpx;
+  background: rgb(66, 206, 47);
+  color: #fff;
+  position: fixed;
+  text-align: center;
+  bottom: 250rpx;
+  left: 300rpx;
+  margin-right: 50rpx;
+  border-radius: 60rpx;
+}
