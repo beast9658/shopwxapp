@@ -10,7 +10,7 @@
       </view>
       <view class="section">
         <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
-          <input name="address" placeholder="收货地址" value="{{region[0]}}{{region[1]}}{{region[2]}}"/>
+          <input name="address" placeholder="收货地址" value="{{region[0]}} {{region[1]}} {{region[2]}}"/>
         </picker>
       </view>
       <view class="section">
