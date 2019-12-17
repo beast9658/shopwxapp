@@ -26,7 +26,7 @@
           <image src="{{item.img}}" style="width:180rpx;height:180rpx;padding:0 20rpx;"></image>
           <view>
             <text class="buycar-item-name" style="color:{{item.status==0? '':'#999'}}">{{item.name}}</text>
-            <view style="display:flex;justify-content: space-between;width:170rpx;padding:15rpx;background:#fafafa;margin:15rpx;" catchtap="{{item.status==0? 'openDialog':''}}" data-id="{{item.value}}">
+            <view style="display:flex;justify-content: space-between;width:170rpx;padding:15rpx;background:#fafafa;margin:15rpx;"  data-goods_id="{{item.goods_id}}" catchtap="{{item.status==0? 'openDialog':''}}" data-id="{{item.value}}">
               <text class="buycar-item-set">{{item.itemset}}</text>
               <image src="/image/形状40.png" style="width:20rpx;height:20rpx;margin:auto 0"></image>
             </view>
@@ -36,11 +36,11 @@
                 <view>
                   <view class="stepper">  
                     <!-- 减号 -->  
-                    <text class="{{minusStatus}}" catchtap="{{item.status==0? 'bindMinus':''}}" data-id="{{item.value}}">-</text>  
+                    <text class="{{minusStatus}}" catchtap="{{item.status==0? 'bindMinus':''}}" data-id="{{item.value}}" data-index="{{index}}">-</text>  
                     <!-- 数值 -->  
                     <input type="number" bindchange="{{item.status==0? 'bindManual':''}}" value="{{item.num}}" data-id="{{item.value}}"/>  
                     <!-- 加号 -->  
-                    <text class="normal" catchtap="{{item.status==0? 'bindPlus':''}}" data-id="{{item.value}}">+</text>  
+                    <text class="normal" catchtap="{{item.status==0? 'bindPlus':''}}" data-id="{{item.value}}" data-index="{{index}}">+</text>  
                   </view>  
                 </view>
               </view>

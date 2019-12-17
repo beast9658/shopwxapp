@@ -198,7 +198,7 @@ Component({
     /* 点击减号 */
     bindMinus: function (e) {
       var checkboxItems = this.data.checkboxItems
-      var currId = e.currentTarget.dataset.id
+      var currId = e.currentTarget.dataset.index
       var num = this.data.checkboxItems[currId].num;
       // 如果大于1时，才可以减  
       if (num > 1) {
@@ -219,7 +219,7 @@ Component({
     /* 点击加号 */
     bindPlus: function (e) {
       var checkboxItems = this.data.checkboxItems
-      var currId = e.currentTarget.dataset.id
+      var currId = e.currentTarget.dataset.index
       var num = this.data.checkboxItems[currId].num;
       // 不作过多考虑自增1  
       checkboxItems[currId].num++;
@@ -297,9 +297,12 @@ Component({
       }
     },
     openDialog: function (e) {
-      console.log(e.currentTarget.dataset.id)
+      console.log(e)
       var dialogId = e.currentTarget.dataset.id
       var priceCount = this.data.setWindow.price
+      this.specs(e.currentTarget.dataset.goods_id)
+
+      
       this.setData({
         priceCount: priceCount,
         setistrue: true,
@@ -473,6 +476,21 @@ Component({
           } else {
             console.log('登录失败！' + res.errMsg)
           }
+        }
+      })
+    },
+    specs(goodsId){
+      wx.request({
+        method:"post",
+        url: app.globalData.requestDomain + '/goods/goodsProperty/' + goodsId,
+        success: (res) => {
+          console.log("查找成功：");
+          console.log(res);
+        },
+        fail: function (res) {
+          console.log("查找失败：");
+          console.log(res);
+          wx.hideLoading();
         }
       })
     }
