@@ -13,7 +13,8 @@ Page({
         province:'XX',
         city: 'XX',
         county: 'XX',
-        value: '0'
+        value: '0',
+        id:'123',
       },
       {
         name: '王先生',
@@ -21,7 +22,8 @@ Page({
         address: 'XX市XX区XX街',
         addressDetail: 'XX小区XX栋XX室',
         value: '1',
-        checked: true
+        checked: true,
+        id:'456'
       }
     ],
   },
@@ -44,7 +46,13 @@ Page({
       url: '/pages/addressEdit/addressEdit',
     })
   },
-
+  changeAddress: function (e) {
+    console.log(e.currentTarget.dataset.id)
+    var id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/addressEdit/addressEdit?id='+id,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

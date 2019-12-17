@@ -17,7 +17,7 @@
           </view>
           <view class="weui-cell__bd">默认地址</view>
           <view class="address-action">
-            <view>修改</view>
+            <view bindtap="changeAddress" data-id="{{item.id}}">修改</view>
             <view>删除</view>
           </view>
         </label>

@@ -5,7 +5,8 @@
   </view>
   <view class="logistics-body">
     <view class="logistics-body-goods">
-      <image src="" wx:for=""></image>
+      <image src="{{item}}" wx:for="{{logisticsImages}}" wx:key="{{index}}" wx:if="{{index<2}}" style="width:160rpx;height:160rpx;margin:20rpx;"></image>
+      <text style="margin:auto">共{{logisticsImages.length}}件商品</text>
     </view>
     <view class="logistics-body-detail">
       <view class="logistics-body-detail-item" wx:for="{{logisticsItems}}" wx:key="{{index}}" style="display:flex;margin:65rpx 0;">

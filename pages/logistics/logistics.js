@@ -7,6 +7,7 @@ Page({
   data: {
     logisticsName: '圆通快递',
     logisticsNum: 'ASD123ZXC123',
+    logisticsImages: ['/image/组74拷贝.png', '/image/组74拷贝.png', '/image/组74拷贝.png', '/image/组74拷贝.png', '/image/组74拷贝.png'],
     logisticsItems: [{
       mes: '已下单',
       img: '/image/组74拷贝.png',

@@ -64,8 +64,8 @@
 				},
 				{
 					"id": 1,
-					"name": "物流",
-					"pathName": "pages/logistics/logistics",
+					"name": "评价成功",
+					"pathName": "pages/successAppraise/successAppraise",
 					"query": "",
 					"scene": null
 				},

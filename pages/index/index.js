@@ -62,6 +62,7 @@ Component({
     },
     onLoad: function (options) {
       this.getdatalist()
+      console.log(wx.getAccountInfoSync().miniProgram.appId)
     },
     getdatalist: function () { //可在onLoad中设置为进入页面默认加载
       var that = this;
