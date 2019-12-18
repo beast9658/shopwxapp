@@ -1,3 +1,6 @@
+.weui-cells::after,.weui-cells::before {
+  border: 0;
+}
 .message-title {
   width: 319rpx;
   display:-webkit-box;

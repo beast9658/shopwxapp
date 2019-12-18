@@ -1,0 +1,23 @@
+<view class="page">
+  <view class="order-list-item-body">
+    <image src="{{itemmes.img}}" style="width:140rpx;height:140rpx;padding-right:30rpx;"></image>
+    <view class="order-list-item-body-mes">
+      <view style="color:#333;font-size:29rpx;">{{itemmes.title}}</view>
+      <view style="color:#999;font-size:24rpx;">{{itemmes.itemset}}</view>
+      <view style="display: flex;justify-content: space-between;">
+        <view style="color:#ff2b29;font-size:29rpx;font-weight:bold">￥{{itemmes.price}}</view>
+        <view style="color:#333;font-size:29rpx;">x{{itemmes.num}}</view>
+      </view>
+    </view>
+  </view>
+  <form>
+    <textarea name="appraiseDetail" placeholder="请输入您的评论" class="appraise-detail"></textarea>
+    <view class="appraise-img">
+      <view class="appraise-img-item" wx:for="{{imgs}}" wx:key="{{index}}">
+        <image src="{{item}}" style="width:140rpx;height:140rpx;padding:20rpx;" wx:if="{{index<4}}"></image>
+        <image src="/image/组73.png" style="width:35rpx;height:35rpx;position: absolute;right:0;top:0" bindtap="deletePic"></image>
+      </view>
+      <image src="/image/添加图片.png" style="width:140rpx;height:140rpx;padding:20rpx;" wx:if="{{imgs.length<4}}" bindtap="addPic"></image>
+    </view>
+  </form>
+</view>

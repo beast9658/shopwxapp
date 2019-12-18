@@ -24,7 +24,9 @@
     "pages/mineCollection/mineCollection",
     "pages/mineBonus/mineBonus",
     "pages/logistics/logistics",
-    "pages/successAppraise/successAppraise"
+    "pages/successAppraise/successAppraise",
+    "pages/addAppraise/addAppraise",
+    "pages/applyRefund/applyRefund"
   ],
   "tabBar": {
     "custom": true,

@@ -22,7 +22,7 @@ Page({
         address: 'XX市XX区XX街',
         addressDetail: 'XX小区XX栋XX室',
         value: '1',
-        checked: true,
+        checked: 1,
         id:'456'
       }
     ],

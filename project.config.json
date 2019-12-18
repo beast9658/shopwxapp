@@ -64,8 +64,8 @@
 				},
 				{
 					"id": 1,
-					"name": "评价成功",
-					"pathName": "pages/successAppraise/successAppraise",
+					"name": "评价",
+					"pathName": "pages/addAppraise/addAppraise",
 					"query": "",
 					"scene": null
 				},

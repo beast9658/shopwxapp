@@ -1,0 +1,29 @@
+.order-list-item-body {
+  display: flex;
+  padding: 30rpx;
+  background: #fff;
+}
+.order-list-item-body-mes {
+  width: 500rpx;
+}
+.order-list-item-body-mes view {
+  display:-webkit-box;
+  -webkit-line-clamp:1;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  -webkit-box-orient:vertical;
+  word-break:break-all;
+  line-height: 50rpx;
+}
+.appraise-detail {
+  width: 100%;
+  background: #fff;
+  padding: 30rpx;
+}
+.appraise-img {
+  display: flex;
+  background: #fff;
+}
+.appraise-img-item {
+  position: relative;
+}
