@@ -1,60 +1,23 @@
 // pages/message/message.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    checkboxItems: [{ 
-        name: 'standard is dealt for u.', 
-        value: '0', 
-        checked: true ,
-        title: '0001',
-        time: '2019-12-12 12:12',
-        isNew: true,
-        },{ 
-        name: 'standard is dealicient for u.', 
-        value: '1' ,
-        title: '0002',
-        time: '2019-12-12 12:12',
-        isNew: true
-        }, {
-        name: 'standard is dealicient for u.',
-        value: '2',
-        title: '0003',
-        time: '2019-12-12 12:12',
-        isNew: true
-      }, {
-        name: 'standard is dealicient for u.',
-        value: '3',
-        title: '0004',
-        time: '2019-12-12 12:12',
-        isNew: true
-      }, {
-        name: 'standard is dealicient for u.',
-        value: '4',
-        title: '0005',
-        time: '2019-12-12 12:12',
-        isNew: true
-      }, {
-        name: 'standard is dealicient for u.',
-        value: '5',
-        title: '0006',
-        time: '2019-12-12 12:12',
-        isNew: true
-      }
-    ],
+    checkboxItems: [],
     pagenum: 1, //初始页默认值为1
   },
   toDetail: function(e) {
     var old = this.data.checkboxItems
     console.log(old)
-    old[e.currentTarget.dataset.index].isNew = false
+    old[e.currentTarget.dataset.index].is_read = 1
     this.setData({
       checkboxItems: old
     });
     wx.navigateTo({
-      url: '/pages/messageDetail/messageDetail',
+      url: '/pages/messageDetail/messageDetail?id=' + old[e.currentTarget.dataset.index].id,
     })
   },
   checkboxChange: function (e) {
@@ -65,7 +28,7 @@ Page({
       checkboxItems[i].checked = false;
 
       for (var j = 0, lenJ = values.length; j < lenJ; ++j) {
-        if (checkboxItems[i].value == values[j]) {
+        if (checkboxItems[i].id == values[j]) {
           checkboxItems[i].checked = true;
           break;
         }
@@ -86,42 +49,92 @@ Page({
     });
   },
   read: function (e) {
+    var ids='';
     var checkboxItems = this.data.checkboxItems;
     for (let i = 0; i < checkboxItems.length; i++) {
       if(checkboxItems[i].checked == true){
-        checkboxItems[i].isNew=false
+        ids += checkboxItems[i].id+','
+        checkboxItems[i].is_read=1
       }
     }
     this.setData({
       checkboxItems: checkboxItems
     });
+    var that = this;
+    if (ids != ""){
+      ids = ids.substring(0,ids.length-1);
+      console.log(ids)
+      wx.request({
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        url: app.globalData.requestDomain + '/msg/batchReadMsg/',
+        data: { ids: ids},
+        method: "POST",
+        success: function (res) {
+          console.log(res.data)
+          if (res.data.status == 1) {
+            //已读成功
+          }
+        },
+        fail: function (err) { },//请求失败
+        complete: function () { }//请求完成后执行的函数
+      })
+    }
+
+
   },
   deleteMes: function (e) {
+    var ids = '';
     var checkboxItems = this.data.checkboxItems;
     for (let i = checkboxItems.length; i > 0; i--) {
       if(checkboxItems[i-1].checked == true) {
-        checkboxItems.splice(i-1,1)
+        ids += checkboxItems[i-1].id + ','
+        checkboxItems.splice(i-1,1)        
       }
     }
     this.setData({
       checkboxItems: checkboxItems
     });
+    if (ids != "") {
+      ids = ids.substring(0, ids.length - 1);
+      console.log(ids)
+      wx.request({
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        url: app.globalData.requestDomain + '/msg/batchDelMsg/',
+        data: { ids: ids },
+        method: "POST",
+        success: function (res) {
+          console.log(res.data)
+          if (res.data.status == 1) {
+            //删除成功
+          }
+        },
+        fail: function (err) { },//请求失败
+        complete: function () { }//请求完成后执行的函数
+      })
+    }
   },
 
 
   getdatalist: function () { //可在onLoad中设置为进入页面默认加载
     var that = this;
     wx.request({
-      url: 'https://www.fastmock.site/mock/373276c726d62e1d4e9ed550969aceda/message/message',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      url: app.globalData.requestDomain + '/msg/getMsg',
       data: {
-        "key": "0",
         "pageNum": that.data.pagenum, //从数据里获取当前页数
         "pageSize": 10, //每页显示条数
       },
       method: "POST",
       success: function (res) {
+        console.log(res.data)
         var arr1 = that.data.checkboxItems; //从data获取当前datalist数组
-        var arr2 = res.data.data.checkboxItems; //从此次请求返回的数据中获取新数组
+        var arr2 = res.data.data.list; //从此次请求返回的数据中获取新数组
         console.log(arr2)
         console.log(that.data.pagenum)
         arr1 = arr1.concat(arr2); //合并数组

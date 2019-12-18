@@ -13,7 +13,7 @@ Page({
         province:'XX',
         city: 'XX',
         county: 'XX',
-        value: '0',
+        isDefault: '0',
         id:'123',
       },
       {
@@ -23,10 +23,15 @@ Page({
         addressDetail: 'XX小区XX栋XX室',
         value: '1',
         checked: 1,
-        id:'456'
+        id:'456',
+        is_default:''
       }
+     
     ],
   },
+  /**
+   * 设置默认--lyz
+   */
   radioChange: function(e) {
     console.log('radio发生change事件，携带value值为：', e.detail.value);
 
@@ -38,19 +43,65 @@ Page({
     this.setData({
       radioItems: radioItems
     });
+    var that = this
+    wx.request({
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      url: app.globalData.requestDomain + '/address/isDef',
+      data: {
+        "id": e.detail.value
+      },
+      success:function(r){
+        console.log(r)
+        if(r.data.data){
+          that.onLoad()
+        }
+      }
+    })
+
   },
- 
+  
+
 
   addAddress: function () {
     wx.navigateTo({
       url: '/pages/addressEdit/addressEdit',
     })
   },
+  /**
+   * 修改事件--lyz
+   */
   changeAddress: function (e) {
     console.log(e.currentTarget.dataset.id)
     var id = e.currentTarget.dataset.id
     wx.navigateTo({
       url: '/pages/addressEdit/addressEdit?id='+id,
+    })
+  },
+  /**
+   * 删除事件--lyz
+   */
+  del: function (e) {
+    var that = this
+    console.log(e.currentTarget.dataset.id)
+    var id = e.currentTarget.dataset.id
+    wx.request({
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      url: app.globalData.requestDomain + '/address/del',
+      data:{
+        "id": id
+      },
+      method:"post",
+      success:function(r){
+        console.log(r)
+        if(r.data.data){
+          that.onLoad()
+        }
+       
+      }
     })
   },
   /**

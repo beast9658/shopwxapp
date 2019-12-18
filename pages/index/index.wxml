@@ -53,9 +53,9 @@
     <view class="recommend">
       <view class="recommend-item" wx:for="{{recommendItem}}" wx:key="index">
         <view class="recommend-item-body" bindtap="toList">
-          <image src="{{item.img}}" mode="scaleToFill" style="width:300rpx;height:300rpx;margin:5rpx;background:#aaa;border-radius: 10rpx"></image>
-          <view class="recommend-item-body-title">{{item.name}}</view>
-          <view style="color:#ff5d45;">￥{{item.price}}</view>
+          <image src="{{domain+item.goods_img}}" mode="scaleToFill" style="width:300rpx;height:300rpx;margin:5rpx;background:#aaa;border-radius: 10rpx"></image>
+          <view class="recommend-item-body-title">{{item.goods_name}}</view>
+          <view style="color:#ff5d45;">￥{{item.now_price}}</view>
         </view>
       </view>
     </view>

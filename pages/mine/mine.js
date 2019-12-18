@@ -102,15 +102,8 @@ Component({
       var that = this;
       wx.request({
         url: app.globalData.requestDomain +'/mine/minePage',
-        // data: {
-        // },
         method: "GET",
         success: function (res) {
-          // var arr1 = that.data.recommendItem; //从data获取当前datalist数组
-          // var arr2 = res.data.data.recommendItem; //从此次请求返回的数据中获取新数组
-          // console.log(arr2)
-          // console.log(that.data.pagenum)
-          // arr1 = arr1.concat(arr2); //合并数组
           that.setData({
             'user.account': res.data.mine.nickname,
             'user.id': res.data.mine.member_id,
@@ -132,13 +125,17 @@ Component({
         }
       })
     },
-    
+    /**
+     * 签到 --lyz
+     */
     dayCheck: function() {
+      var that = this;
       wx.request({
         url: app.globalData.requestDomain +'/mine/addCheckIntegral',
         method: "GET",
         success:function (r){
           console.log(r)
+        that.onLoad()
         }
 
       })
@@ -166,6 +163,7 @@ Component({
     toWaitPay:function () {
       wx.navigateTo({
         url: '/pages/order/order?type=1',
+        // url: '/pages/order/order/1',
       })
     },
     toWaitSend: function() {

@@ -3,7 +3,7 @@
     <view class="weui-cells weui-cells_checkbox weui-cells_after-title" style="margin-bottom:200rpx;">
         <checkbox-group bindchange="checkboxChange">
             <label class="weui-cell weui-check__label" wx:for="{{checkboxItems}}" wx:key="value">
-                <checkbox class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
+                <checkbox class="weui-check" value="{{item.id}}" checked="{{item.checked}}"/>
 
                 <view class="weui-cell__hd weui-check__hd_in-checkbox">
                     <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
@@ -11,10 +11,10 @@
                 </view>
                 <view class="weui-cell noborder" catchtap="toDetail" style="padding:0;width:100%" data-index="{{index}}">
                   <view class="weui-cell__bd">
-                      <view class="message-title" style="{{item.isNew? '' : 'color: #888888;'}}">{{item.title}}</view>
-                      <view style="font-size: 13px;color: #888888;">{{item.time}}</view>
+                      <view class="message-title" style="{{item.is_read == 0 ?'' : 'color: #888888;'}}">{{item.send_title}}</view>
+                      <view style="font-size: 13px;color: #888888;">{{item.add_time}}</view>
                   </view>
-                  <view class="weui-cell__ft" style="font-size: 0" wx:if="{{item.isNew}}">
+                  <view class="weui-cell__ft" style="font-size: 0" wx:if="{{item.is_read == 0}}">
                       <view class="weui-badge weui-badge_dot" style="margin-left: 5px;margin-right: 5px;"></view>
                   </view>
                 </view>

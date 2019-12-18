@@ -2,28 +2,30 @@
   <view class="address-input">
     <form bindsubmit="formSubmit" bindreset="formReset">
       <view class="section">
-        <input class="" name="name" placeholder="收货人" />
+        <input class="" name="name" placeholder="收货人" value="{{editValues.name}}" />
       </view>
       <view class="section address-phone">
-        <input name="phone" placeholder="手机号码" maxlength="11" type="number"/>
+        <input name="phone" placeholder="手机号码" maxlength="11" type="number"  value="{{editValues.phone}}"/>
+        <input name="id" type="hidden"   value="{{editValues.id}}"/>
         <view style="padding:30rpx;">+86</view>
       </view>
       <view class="section">
         <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
           <input name="province" placeholder="收货地址" value="{{region[0]}} {{region[1]}} {{region[2]}}"/>
+           <!-- <input name="province" placeholder="收货地址" value="{{editValues.province}} {{editValues.city}} {{editValues.county}}"/> -->
         </picker>
       </view>
       <view class="section">
         <!-- <input name="adderssDetail" class="address-select" type="textarea" placeholder="详细地址：如街道、门牌号、小区、楼栋号、单元室等" /> -->
-        <textarea placeholder="详细地址：如街道、门牌号、小区、楼栋号、单元室等" name="address"/>
+        <textarea placeholder="详细地址：如街道、门牌号、小区、楼栋号、单元室等" name="address"  value="{{editValues.address}}" />
       </view>
       <view class="section section_gap address-set">
         <view class="section__title">设为默认地址</view>
-        <switch name="isDefault" />
+        <switch name="isDefault" value="{{editValues.isDefault}}" />
       </view>
       <view class="btn-area">
         <button formType="submit" class="btn-area-save">保存</button>
       </view>
     </form>
-  </view>
+  </view> 
 </view>

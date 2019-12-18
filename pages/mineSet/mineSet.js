@@ -1,4 +1,5 @@
 // pages/mineSet/mineSet.js
+var app = getApp();
 Page({
 
   /**
@@ -6,11 +7,29 @@ Page({
    */
   data: {
     array: ['男', '女'],
-    index: 0,
-    headPath:'/image/touxaing.png'
+    sex: 1,
+    profile_photo:'/image/touxaing.png',
+    member_id:'',
+    nickname:''
   },
+  /**
+   * 保存事件 --lyz
+   */
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    wx.request({
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      url: app.globalData.requestDomain + '/mine/saveMemberInfo',
+      method:"post",
+      data:{
+        "data": JSON.stringify(e.detail.value)
+        },
+      success:function (r){
+        console.log(r)
+      }  
+    })
   },
   formReset: function () {
     console.log('form发生了reset事件')
@@ -18,7 +37,7 @@ Page({
   bindPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      index: e.detail.value
+      sex: e.detail.value
     })
   },
   changeHead: function (e) {
@@ -31,7 +50,7 @@ Page({
         let tempFilePaths = res.tempFilePaths
         console.log(tempFilePaths)
         this.setData({
-          headPath: tempFilePaths
+          profile_photo: tempFilePaths
         })
       }
     })
@@ -41,9 +60,32 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getMineData();
   },
+  /**
+   * 获取加载数据
+   */
+ 
+  getMineData: function () {
+    var that = this;
+    wx.request({
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      method:"post",
+      url: app.globalData.requestDomain + '/mine/toMineInstall',
+      success:function (r){
+        console.log(r.data.sex)
+        that.setData({
+          'sex':r.data.sex,
+          'profile_photo': r.data.profile_photo,
+          'member_id': r.data.member_id,
+          'nickname': r.data.nickname
+        })
+      }
 
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

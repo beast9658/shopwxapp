@@ -304,6 +304,34 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // var that = this;
+    // wx.request({
+    //   header: {
+    //     'content-type': 'application/x-www-form-urlencoded'
+    //   },
+    //   url: app.globalData.requestDomain + '/goods/getShopRecommend',
+    //   data: {
+    //     "pageNum": that.data.pagenum, //从数据里获取当前页数
+    //     "pageSize": 10, //每页显示条数
+    //   },
+    //   method: "POST",
+    //   success: function (res) {
+    //     console.log(res.data.data)
+    //     console.log(that.data.pagenum)
+
+    //     var arr1 = that.data.recommendItem; //从data获取当前datalist数组
+    //     var arr2 = res.data.data.data.list; //从此次请求返回的数据中获取新数组
+    //     var readnum = res.data.data.readnum
+    //     arr1 = arr1.concat(arr2); //合并数组
+    //     that.setData({
+    //       recommendItem: arr1, //合并后更新datalist
+    //       readnum: readnum
+    //     })
+
+    //   },
+    //   fail: function (err) { },//请求失败
+    //   complete: function () { }//请求完成后执行的函数
+    // })
 
   },
 

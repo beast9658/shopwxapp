@@ -20,4 +20,4 @@
       <image src="/image/添加图片.png" style="width:140rpx;height:140rpx;padding:20rpx;" wx:if="{{imgs.length<4}}" bindtap="addPic"></image>
     </view>
   </form>
-</view>
+</view> 

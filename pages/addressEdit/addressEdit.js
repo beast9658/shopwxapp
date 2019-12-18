@@ -7,7 +7,8 @@ Page({
    */
   data: {
     region: [],
-    setIndex:''
+    id:'',
+    editValues:[]
   },
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
@@ -26,6 +27,11 @@ Page({
      
       success:function (r){
         console.log(r)
+        if(r.data.success){
+          wx.navigateTo({
+            url: '/pages/address/address',
+          })
+        }
       }
     })
 
@@ -45,10 +51,38 @@ Page({
   onLoad: function (options) {
     // setIndex: options.id
     this.setData({
-      setIndex: options.id
+      id: options.id
     })
     console.log(options.id)
-    console.log(this.data.setIndex)
+    if (options.id != null){
+      this.getEditAddr();
+    }
+   
+  },
+  getEditAddr:function (){
+    var that = this;
+      wx.request({
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        url: app.globalData.requestDomain + '/address/addAddress',
+        data:{
+          "id":that.data.id
+        },
+        method:"post",
+        success:function(r){
+          console.log("阿斯蒂芬------" + JSON.stringify(r.data.editAddr.r))
+          var arr = new Array();
+          arr.push(r.data.editAddr.r.province);
+          arr.push(r.data.editAddr.r.city);
+          arr.push(r.data.editAddr.r.county);
+          that.setData({
+            editValues: r.data.editAddr.r,
+            region: arr
+          })
+        }
+        
+      })
   },
 
   /**

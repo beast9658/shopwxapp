@@ -1,4 +1,5 @@
-Component({
+var app = getApp();
+Component({  
   pageLifetimes: {
     show() {
       if (typeof this.getTabBar === 'function' &&
@@ -23,6 +24,8 @@ Component({
     nextMargin: 0,
     autoplay: true,
     circular: true,
+    domain: app.globalData.domain,
+    readnum:0,
 
     // 导航按钮设置
     navBtn:[{
@@ -67,21 +70,26 @@ Component({
     getdatalist: function () { //可在onLoad中设置为进入页面默认加载
       var that = this;
       wx.request({
-        url: 'https://www.fastmock.site/mock/699715a194ca93058fa372074d4318a1/itemlist/recommendItem',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        url: app.globalData.requestDomain+'/shopindex/getShopRecommend',
         data: {
-          "key": "0",
           "pageNum": that.data.pagenum, //从数据里获取当前页数
           "pageSize": 10, //每页显示条数
         },
         method: "POST",
         success: function (res)  {
-          var arr1 = that.data.recommendItem; //从data获取当前datalist数组
-          var arr2 = res.data.data.recommendItem; //从此次请求返回的数据中获取新数组
-          console.log(arr2)
+          console.log(res.data.data)
           console.log(that.data.pagenum)
+          
+          var arr1 = that.data.recommendItem; //从data获取当前datalist数组
+          var arr2 = res.data.data.data.list; //从此次请求返回的数据中获取新数组
+          var readnum = res.data.data.readnum          
           arr1 = arr1.concat(arr2); //合并数组
           that.setData({
-            recommendItem: arr1 //合并后更新datalist
+            recommendItem: arr1, //合并后更新datalist
+            readnum: readnum
           })
           
         },

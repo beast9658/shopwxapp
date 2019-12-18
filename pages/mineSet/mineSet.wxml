@@ -2,22 +2,22 @@
   <view class="address-input">
     <form bindsubmit="formSubmit" bindreset="formReset">
       <view class="head">
-        <image src="{{headPath}}" style="width:130rpx;height:130rpx;"></image>
+        <image src="{{profile_photo}}" style="width:130rpx;height:130rpx;"></image>
         <view style="color:#ff5d24;font-size:26rpx;" bindtap="changeHead">更换头像</view>
-        <input name="head" style="display:none" value="{{headPath}}"></input>
+        <input name="profile_photo" style="display:none" value="{{profile_photo}}"></input>
       </view>
       <view class="section">
         <view>昵称</view>
-        <input class="" name="name" placeholder="昵称" />
+        <input class="" name="nickname" value="{{nickname}}" />
       </view>
       <view class="section address-phone">
         <view>ID</view>
-        <input name="id" placeholder="ID" type="number"/>
+        <input name="member_id"  value="{{member_id}}" type="number"/>
       </view>
       <view class="section">
         <view>性别</view>
-        <picker mode="selector" bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-          <input name="sex" placeholder="性别" value="{{array[index]}}"/>
+        <picker mode="selector" bindchange="bindPickerChange" value="{{sex}}" range="{{array}}">
+          <input name="sex" placeholder="性别" value="{{array[sex]}}"/>
         </picker>
       </view>
       <view class="btn-area">
